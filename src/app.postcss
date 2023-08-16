@@ -3,6 +3,20 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    font-family: 'Anuphan Variable', sans-serif;
+* {
+	font-family: 'Anuphan Variable', sans-serif;
+}
+
+.btn-primary {
+	@apply relative;
+    &::before {
+			content: '';
+			@apply transition-all duration-150 border-4 border-transparent blur-md w-full h-full absolute;
+	}
+	&:hover {
+		&::before {
+			content: '';
+			@apply border-4 border-primary blur-md w-full h-full absolute;
+		}
+	}
 }
