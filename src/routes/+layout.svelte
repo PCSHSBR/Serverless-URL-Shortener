@@ -1,14 +1,18 @@
 <script>
-	import '@fontsource-variable/anuphan';
+	import '../app.scss';
 	import '../app.postcss';
-	import Navbar from '../lib/Navbar.svelte';
-	import { onMount } from 'svelte';
-	onMount(() => {
-		const currentTheme = localStorage.getItem('theme');
-		const htmlElement = document.querySelector('[data-theme]');
-		htmlElement.setAttribute('data-theme', currentTheme);
-	});
+	import '@fontsource-variable/anuphan';
+	import { FirebaseApp } from 'sveltefire';
+	import { initializeApp } from 'firebase/app';
+	import { getFirestore } from 'firebase/firestore';
+	import { getAuth } from 'firebase/auth';
+	import { app } from '$lib/firebase';
+	const firestore = getFirestore(app);
+	const auth = getAuth(app);
 </script>
-<main>
-	<slot />
-</main>
+
+<FirebaseApp {auth} {firestore}>
+	<main>
+		<slot />
+	</main>
+</FirebaseApp>

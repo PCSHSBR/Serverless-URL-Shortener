@@ -1,0 +1,74 @@
+/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */
+
+* {
+  font-family: 'Anuphan Variable', sans-serif;
+}
+
+.url-container {
+  @apply relative rounded-2xl transition-all duration-100;
+
+  &:focus-within {
+    @apply shadow-lg;
+
+    &::after {
+      @apply blur-sm;
+    }
+  }
+
+  &::after {
+    transition: all ease 0.5s transition-all duration-100;
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    left: -2px;
+    right: -2px;
+    background: linear-gradient(90deg,
+        hsl(var(--p)),
+        transparent,
+        transparent,
+        transparent,
+        transparent,
+        hsl(var(--p)));
+    content: '';
+    z-index: -1;
+    border-radius: 1rem;
+  }
+}
+
+.feature-container-card {
+  @apply relative bg-base-100 transition-all duration-100;
+
+  &:hover {
+    @apply shadow-lg;
+
+    &::after {
+      @apply blur-sm;
+    }
+  }
+
+  &::after {
+    @apply transition-all duration-100 absolute rounded-2xl bg-gradient-to-t from-primary/20 to-primary;
+    top: -2px;
+    bottom: -2px;
+    left: -2px;
+    right: -2px;
+    content: '';
+    z-index: -1;
+  }
+}
+
+.btn-primary {
+  @apply relative;
+
+  &::before {
+    content: '';
+    @apply transition-all duration-150 border-4 border-transparent blur-md w-full h-full absolute;
+  }
+
+  &:hover {
+    &::before {
+      content: '';
+      @apply border-4 border-primary blur-md w-full h-full absolute;
+    }
+  }
+}

@@ -19,12 +19,15 @@
 		"postcss-load-config": "^4.0.1",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.10.1",
+		"sass": "^1.63.6",
 		"svelte": "^4.0.0",
 		"tailwindcss": "^3.3.2",
 		"vite": "^4.3.6"
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource-variable/anuphan": "^5.0.3"
+		"@fontsource-variable/anuphan": "^5.0.3",
+		"firebase": "^9.23.0",
+		"sveltefire": "^0.4.2"
 	}
 }
