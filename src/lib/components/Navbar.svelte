@@ -28,6 +28,8 @@
 				class="btn btn-primary">เข้าสู่ระบบ</button
 			>
 		</SignedOut>
-		<SignedIn>Logged in!</SignedIn>
+		<SignedIn let:user let:signOut>
+			<button class="btn btn-primary" on:click={signOut}>สวัสดี, {user.displayName}</button>
+		</SignedIn>
 	</div>
 </nav>
