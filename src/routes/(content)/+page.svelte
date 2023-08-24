@@ -67,12 +67,8 @@
 		</div>
 		<div>
 			<p class="text-center">
-				<button
-					class="btn btn-ghost btn-sm"
-					on:click={() => {
-						signIn(auth);
-					}}>เข้าสู่ระบบ</button
-				> เพื่อเริ่มใช้งาน
+				<a href="/login"><button class="btn btn-ghost btn-sm">เข้าสู่ระบบ</button
+					></a> เพื่อเริ่มใช้งาน
 			</p>
 		</div>
 	</SignedOut>
