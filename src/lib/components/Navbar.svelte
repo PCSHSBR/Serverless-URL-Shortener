@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { SignedIn, SignedOut } from 'sveltefire';
 	import { signIn } from '$lib/firebase';
+	import { redirect } from '@sveltejs/kit';
+	import { goto } from '$app/navigation';
 </script>
 
 <nav class="navbar">
@@ -21,15 +23,12 @@
 			</li>
 		</ul>
 		<SignedOut let:auth>
-			<button
-				on:click|preventDefault={() => {
-					signIn(auth);
-				}}
+			<a href="/login"><button
 				class="btn btn-primary">เข้าสู่ระบบ</button
-			>
+			></a>
 		</SignedOut>
 		<SignedIn let:user let:signOut>
-			<button class="btn btn-primary" on:click={signOut}>สวัสดี, {user.displayName}</button>
+			<button class="btn btn-primary" on:click={signOut}>แดชบอร์ด</button>
 		</SignedIn>
 	</div>
 </nav>
