@@ -21,7 +21,7 @@
         <div class=" bg-base-200/50 space-y-4 shadow-xl backdrop-blur-xl p-8 rounded-2xl flex flex-col">
             <h1 class="text-3xl font-bold">เข้าสู่ระบบ</h1>
             <hr class="text-primary">
-            <small class="flex items-center">
+            <small class="flex flex-wrap items-center">
                 <Icon icon='mdi:info' class="mr-2"/>สำหรับอีเมล<code>@pccbr.ac.th</code> และ <code>@pcshsbr.ac.th</code> เท่านั้น
             </small>
             <button class="btn btn-primary" on:click|preventDefault={()=>{

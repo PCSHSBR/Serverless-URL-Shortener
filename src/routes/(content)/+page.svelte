@@ -9,7 +9,7 @@
 
 <section
 	class="max-w-[calc(792px-24px)] w-[calc(100vw-64px)] mx-auto {$user
-		? ''
+		? 'mt-10'
 		: 'absolute top-1/2 -translate-y-1/2 right-0 left-0'}"
 >
 	<h1 class="text-6xl leading-snug">
@@ -29,7 +29,6 @@
 			/>
 		</div>
 	</SignedIn>
-	<SignedOut let:auth>
 		<div
 			class="carousel carousel-center w-full px-1 py-4 space-x-4 bg-neutral rounded-box md:justify-center justify-start"
 		>
@@ -71,5 +70,4 @@
 					></a> เพื่อเริ่มใช้งาน
 			</p>
 		</div>
-	</SignedOut>
 </section>

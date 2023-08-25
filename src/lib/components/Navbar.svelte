@@ -28,7 +28,7 @@
 			></a>
 		</SignedOut>
 		<SignedIn let:user let:signOut>
-			<button class="btn btn-primary" on:click={signOut}>แดชบอร์ด</button>
+			<a href="/dashboard"><button class="btn btn-primary">แดชบอร์ด</button></a>
 		</SignedIn>
 	</div>
 </nav>
