@@ -1,7 +1,7 @@
 /* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */
 
 * {
-  font-family: 'Anuphan Variable', sans-serif;
+  font-family: "Anuphan Variable", sans-serif;
 }
 
 .url-container {
@@ -22,14 +22,16 @@
     bottom: -2px;
     left: -2px;
     right: -2px;
-    background: linear-gradient(90deg,
-        hsl(var(--p)),
-        transparent,
-        transparent,
-        transparent,
-        transparent,
-        hsl(var(--p)));
-    content: '';
+    background: linear-gradient(
+      90deg,
+      hsl(var(--p)),
+      transparent,
+      transparent,
+      transparent,
+      transparent,
+      hsl(var(--p))
+    );
+    content: "";
     z-index: -1;
     border-radius: 1rem;
   }
@@ -52,7 +54,7 @@
     bottom: -2px;
     left: -2px;
     right: -2px;
-    content: '';
+    content: "";
     z-index: -1;
   }
 }
@@ -61,13 +63,13 @@
   @apply relative;
 
   &::before {
-    content: '';
+    content: "";
     @apply transition-all duration-150 border-4 border-transparent blur-md w-full h-full absolute;
   }
 
   &:hover {
     &::before {
-      content: '';
+      content: "";
       @apply border-4 border-primary blur-md w-full h-full absolute;
     }
   }
