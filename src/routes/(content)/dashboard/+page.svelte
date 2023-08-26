@@ -29,7 +29,7 @@
         ><Icon icon="mdi:account" />จัดการบัญชี</button></a>
     </SignedIn>
     <SignedOut let:auth>
-      <p>คุณยังไม่ดเข้าสู่ระบบโปรดเข้าสู่ระบบ</p>
+      <p>คุณยังไม่ได้เข้าสู่ระบบ โปรดเข้าสู่ระบบ</p>
       <button
         class="btn btn-sm btn-primary"
         on:click={async () => {

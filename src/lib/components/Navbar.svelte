@@ -7,34 +7,27 @@
   import { page } from "$app/stores";
   import { goto } from "$app/navigation";
   import Logo from "$lib/assets/Icon.svelte";
-    import { onMount } from "svelte";
+  import { onMount } from "svelte";
+  import { dev } from "$app/environment";
 
   let menuState = false;
   function toggleMenu() {
-    console.log("toggle");
+    if (dev) console.log("toggle");
     fixMenu();
     menuState = !menuState;
   }
   function fixMenu() {
-    if (menuState){
+    if (menuState) {
       document.body.style.overflow = "auto";
-    }
-    else{
+    } else {
       document.body.style.overflow = "hidden";
     }
   }
-  onMount(() => {
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 768) {
-        document.body.style.overflow = "auto";
-      }
-    });
-  });
 </script>
 
 {#if menuState}
   <div
-    class="md:hidden block z-[1000] absolute top-0 left-0 w-full h-full bg-base-200/90 backdrop-blur-lg"
+    class="md:hidden block z-40 fixed top-0 left-0 bottom-0 right-0 w-full h-full bg-base-200/90 backdrop-blur-lg"
     transition:slide|local={{ duration: 500 }}
   >
     <ul class="mt-16 menu menu-vertical w-full gap-2 px-1">
@@ -48,7 +41,11 @@
   </div>
 {/if}
 
-<nav class="navbar sticky top-0 z-[1001] {$page.url.pathname.match("/dashboard") ? "bg-base-200":""}">
+<nav
+  class="navbar sticky top-0 z-50 {$page.url.pathname.match('/dashboard')
+    ? 'bg-base-200'
+    : ''}"
+>
   <label class="md:hidden grid btn btn-ghost swap swap-rotate">
     <input type="checkbox" bind:checked={menuState} on:click={fixMenu} />
     <Icon class="text-xl swap-on fill-current" icon="mdi:close" />
@@ -76,7 +73,10 @@
     <SignedIn let:user let:signOut>
       <a href="/dashboard"
         ><button class="btn btn-primary"
-          ><Icon icon="material-symbols:dashboard" on:click={fixMenu}/>แดชบอร์ด</button
+          ><Icon
+            icon="material-symbols:dashboard"
+            on:click={fixMenu}
+          />แดชบอร์ด</button
         ></a
       >
     </SignedIn>

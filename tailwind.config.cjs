@@ -2,8 +2,13 @@
 const config = {
   content: ["./src/**/*.{html,js,svelte,ts}"],
   theme: {
-    colors: {
-      "dark-base-50": "#23384D",
+    extend: {
+      fontFamily: {
+        sans: ["Anuphan Variable", "sans-serif"],
+      },
+      colors: {
+        "dark-base-50": "#23384D",
+      },
     },
   },
   daisyui: {

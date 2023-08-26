@@ -1,13 +1,12 @@
-// src/app.d.ts
-
+// See https://kit.svelte.dev/docs/types#app
+// for information about these interfaces
 declare global {
-  // interface Window {}
-  namespace App {
-    // interface Locals {}
-    // interface PageData {}
-    // interface Error {}
-    // interface Platform {}
-  }
+	namespace App {
+		// interface Error {}
+		// interface Locals {}
+		// interface PageData {}
+		// interface Platform {}
+	}
 }
 
 export {};
