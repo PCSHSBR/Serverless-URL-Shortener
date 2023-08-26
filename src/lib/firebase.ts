@@ -23,11 +23,15 @@ export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 
-export function isSignedIn(auth: Auth) {
+export function isSignedIn(auth:Auth){
   return auth.currentUser !== null;
 }
 
 export async function signIn(auth: Auth) {
   const provider = new GoogleAuthProvider();
   await signInWithPopup(auth, provider);
+}
+
+export async function signOut(auth:Auth) {
+  await auth.signOut();  
 }
