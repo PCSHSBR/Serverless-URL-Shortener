@@ -11,8 +11,8 @@
   let menuState = false;
   function toggleMenu() {
     console.log("toggle");
-    menuState = !menuState;
     fixMenu();
+    menuState = !menuState;
   }
   function fixMenu() {
     if (menuState){
