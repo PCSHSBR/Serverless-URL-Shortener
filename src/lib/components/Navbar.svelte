@@ -4,6 +4,7 @@
   import { slide } from "svelte/transition";
   import { signIn } from "$lib/firebase";
   import { redirect } from "@sveltejs/kit";
+  import { page } from "$app/stores";
   import { goto } from "$app/navigation";
   import Logo from "$lib/assets/Icon.svelte";
     import { onMount } from "svelte";
@@ -47,7 +48,7 @@
   </div>
 {/if}
 
-<nav class="navbar relative z-[1001]">
+<nav class="navbar relative z-[1001] {$page.url.pathname.match("/dashboard") ? "bg-base-200":""}">
   <label class="md:hidden grid btn btn-ghost swap swap-rotate">
     <input type="checkbox" bind:checked={menuState} on:click={fixMenu} />
     <Icon class="text-xl swap-on fill-current" icon="mdi:close" />

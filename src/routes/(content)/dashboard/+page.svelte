@@ -15,7 +15,7 @@
   });
 </script>
 
-<section class="px-8 max-w-5xl m-auto mx-auto mt-10">
+<section class="px-8 m-auto mx-auto mt-10">
   <div>
     <SignedIn let:auth>
       <p>
@@ -42,32 +42,9 @@
       >
     </SignedOut>
   </div>
-  <SignedIn>
-    <h1 class="text-6xl leading-snug">
-      <span class="font-extrabold text-primary">ลิงก์</span> ทั้งหมด
-    </h1>
-    <div
-      class="url-container cursor-pointer bg-base-200 p-2 my-4 flex"
-      transition:fade|local={{ duration: 300 }}
-    >
-      <button class="btn btn-primary" on:click|preventDefault={() => {}}
-        >ทำให้สั้น</button
-      >
-      <input
-        type="text"
-        class="w-full bg-transparent mx-4 border-none outline-none"
-        placeholder="ลิงก์"
-      />
-    </div>
-    <div class="space-y-4">
-      <ShortedLink/>
-      <ShortedLink/>
-      <ShortedLink/>
-      <ShortedLink/>
-    </div>
-  </SignedIn>
-</section>
-<section class="px-8 py-12 max-w-5xl m-auto">
+  <h1 class="text-6xl leading-snug">
+    <span class="font-extrabold text-primary">แดช</span>บอร์ด
+  </h1>
   UID: {$user?.uid}
   <Collection ref="links/{$user?.uid}/createdLinks" let:data let:count>
     {#each data as link}
