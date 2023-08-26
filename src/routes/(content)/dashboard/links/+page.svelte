@@ -1,6 +1,6 @@
 <script lang="ts">
     import Icon from "@iconify/svelte";
-    import { fade } from "svelte/transition";
+    import { fade,slide } from "svelte/transition";
     import { onMount } from "svelte";
     import { Collection, SignedIn, SignedOut, userStore } from "sveltefire";
     import { auth, signIn } from "$lib/firebase";
@@ -16,32 +16,6 @@
   </script>
   
   <section class="px-8 m-auto mx-auto mt-10">
-    <div>
-      <SignedIn let:auth>
-        <p>
-          ยินดีต้อนรับ <b>{auth.currentUser?.displayName}</b> | อีเมล:
-          <b>{auth.currentUser?.email}</b>
-        </p>
-        <button
-          class="btn btn-sm btn-primary"
-          on:click={async () => {
-            await auth.signOut();
-            if (!$user) {
-              goto("/");
-            }
-          }}>ออกจากระบบ</button
-        >
-      </SignedIn>
-      <SignedOut let:auth>
-        <p>คุณยังไม่ดเข้าสู่ระบบโปรดเข้าสู่ระบบ</p>
-        <button
-          class="btn btn-sm btn-primary"
-          on:click={async () => {
-            await goto("/login");
-          }}>เข้าสู่ระบบ</button
-        >
-      </SignedOut>
-    </div>
     <SignedIn>
       <h1 class="text-6xl leading-snug">
         <span class="font-extrabold text-primary">ลิงก์</span> ทั้งหมด

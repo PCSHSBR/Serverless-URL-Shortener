@@ -1,6 +1,6 @@
 <script lang="ts">
   import Icon from "@iconify/svelte";
-  import { fade } from "svelte/transition";
+  import { fade, slide } from "svelte/transition";
   import { onMount } from "svelte";
   import { Collection, SignedIn, SignedOut, userStore } from "sveltefire";
   import { auth, signIn } from "$lib/firebase";
@@ -16,21 +16,17 @@
 </script>
 
 <section class="px-8 m-auto mx-auto mt-10">
+  <h1 class="text-6xl leading-snug">
+    <span class="font-extrabold text-primary">แดช</span>บอร์ด
+  </h1>
   <div>
     <SignedIn let:auth>
       <p>
         ยินดีต้อนรับ <b>{auth.currentUser?.displayName}</b> | อีเมล:
         <b>{auth.currentUser?.email}</b>
       </p>
-      <button
-        class="btn btn-sm btn-primary"
-        on:click={async () => {
-          await auth.signOut();
-          if (!$user) {
-            goto("/");
-          }
-        }}>ออกจากระบบ</button
-      >
+      <a href="/dashboard/account"><button class="btn btn-primary"
+        ><Icon icon="mdi:account" />จัดการบัญชี</button></a>
     </SignedIn>
     <SignedOut let:auth>
       <p>คุณยังไม่ดเข้าสู่ระบบโปรดเข้าสู่ระบบ</p>
@@ -42,13 +38,4 @@
       >
     </SignedOut>
   </div>
-  <h1 class="text-6xl leading-snug">
-    <span class="font-extrabold text-primary">แดช</span>บอร์ด
-  </h1>
-  UID: {$user?.uid}
-  <Collection ref="links/{$user?.uid}/createdLinks" let:data let:count>
-    {#each data as link}
-      <pre>{JSON.stringify(link, null, 2)}</pre>
-    {/each}
-  </Collection>
 </section>
