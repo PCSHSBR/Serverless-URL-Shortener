@@ -1,31 +1,47 @@
 <script lang="ts">
   import Icon from "@iconify/svelte";
   import { fade } from "svelte/transition";
-  import { SignedIn, SignedOut, userStore } from "sveltefire";
-  import { auth, signIn,isSignedIn } from "$lib/firebase";
   import { onMount } from "svelte";
+  import { Collection, SignedIn, SignedOut, userStore } from "sveltefire";
+  import { auth, signIn } from "$lib/firebase";
+  import { goto } from "$app/navigation";
 
   const user = userStore(auth);
+
+  onMount(async () => {
+    if (!$user) {
+      goto("/login");
+    }
+  });
 </script>
 
-<section class="max-w-[calc(900px-24px)] w-[calc(100vw-64px)] mx-auto mt-10">
-	<div>
+<section class="px-8 max-w-5xl m-auto mx-auto mt-10">
+  <div>
     <SignedIn let:auth>
-      <p>ยินดีต้อนรับ <b>{auth.currentUser?.displayName}</b> | อีเมล์: <b>{auth.currentUser?.email}</b></p>
-      <button class="btn btn-sm btn-primary" on:click={async()=>{
-        await auth.signOut()
-        if ($user == null) {
-          location.href = "/"
-        }
-      }}>ออกจากระบบ</button>
+      <p>
+        ยินดีต้อนรับ <b>{auth.currentUser?.displayName}</b> | อีเมล:
+        <b>{auth.currentUser?.email}</b>
+      </p>
+      <button
+        class="btn btn-sm btn-primary"
+        on:click={async () => {
+          await auth.signOut();
+          if (!$user) {
+            goto("/");
+          }
+        }}>ออกจากระบบ</button
+      >
     </SignedIn>
     <SignedOut let:auth>
       <p>คุณยังไม่ดเข้าสู่ระบบโปรดเข้าสู่ระบบ</p>
-      <button class="btn btn-sm btn-primary" on:click={async()=>{
-        location.href = "/login"
-      }}>เข้าสู่ระบบ</button>
+      <button
+        class="btn btn-sm btn-primary"
+        on:click={async () => {
+          await goto("/login");
+        }}>เข้าสู่ระบบ</button
+      >
     </SignedOut>
-	</div>
+  </div>
   <SignedIn>
     <h1 class="text-6xl leading-snug">
       <span class="font-extrabold text-primary">ลิงก์</span> ทั้งหมด
@@ -44,4 +60,12 @@
       />
     </div>
   </SignedIn>
+</section>
+<section class="px-8 py-12 max-w-5xl m-auto">
+  UID: {$user?.uid}
+  <Collection ref="links/{$user?.uid}/createdLinks" let:data let:count>
+    {#each data as link}
+      <pre>{JSON.stringify(link, null, 2)}</pre>
+    {/each}
+  </Collection>
 </section>

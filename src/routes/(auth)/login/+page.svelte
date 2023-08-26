@@ -3,10 +3,12 @@
   import box_img from "$lib/assets/box.png";
   import { signIn, auth } from "$lib/firebase";
   import { userStore, SignedIn } from "sveltefire";
+  import { goto } from "$app/navigation";
 
   const user = userStore(auth);
+
   $: if ($user) {
-    location.href = "/";
+    goto("/dashboard");
   }
 </script>
 
@@ -26,14 +28,17 @@
     class="login-div max-w-md w-[calc(100vw-32px)] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
   >
     <div
-      class=" bg-base-200/50 space-y-4 shadow-xl backdrop-blur-xl p-8 rounded-2xl flex flex-col"
+      class="bg-base-200/50 space-y-4 shadow-xl backdrop-blur-xl p-8 rounded-2xl flex flex-col"
     >
       <h1 class="text-3xl font-bold">เข้าสู่ระบบ</h1>
       <hr class="text-primary" />
       <small class="flex flex-wrap items-center">
-        <Icon icon="mdi:info" class="mr-2" />สำหรับอีเมล
-        <code>@pccbr.ac.th</code>
-        และ <code>@pcshsbr.ac.th</code> เท่านั้น
+        <Icon icon="mdi:info" class="mr-2" />
+        <span>
+          สำหรับอีเมล
+          <code>@pccbr.ac.th</code>
+          และ <code>@pcshsbr.ac.th</code> เท่านั้น
+        </span>
       </small>
       <button
         class="btn btn-primary"
