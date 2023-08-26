@@ -1,89 +1,75 @@
 <script lang="ts">
-  import Icon from "@iconify/svelte";
-  import { fade } from "svelte/transition";
-  import { SignedIn, SignedOut, userStore } from "sveltefire";
-  import { auth, signIn } from "$lib/firebase";
-  import ShortedLink from "$lib/components/ShortedLink.svelte";
-  import linkGlass from "$lib/assets/linkGlass.png"
+	import Icon from '@iconify/svelte';
+	import { fade } from 'svelte/transition';
+	import { SignedIn, SignedOut, userStore } from 'sveltefire';
+	import { auth, signIn } from '$lib/firebase';
+	import ShortedLink from '$lib/components/ShortedLink.svelte';
+	import linkGlass from '$lib/assets/linkGlass.png';
 
-  const user = userStore(auth);
+	const user = userStore(auth);
 </script>
 
-<section
-  class="max-w-[calc(792px-24px)] w-[calc(100vw-64px)] mx-auto mt-10"
->
-  <h1 class="text-6xl leading-snug">
-     <span class="flex w-[128px] h-[128px]">
-      <img src="{linkGlass}" class="object-cover w-full h-full" alt="">
-    </span> ทำให้ URL <span class="font-extrabold text-primary"> สั้นกว่าเดิม </span> ได้เลยตอนนี้
-  </h1>
-  <SignedIn>
-    <div
-      class="url-container cursor-pointe bg-base-200 p-2 my-4 flex"
-      in:fade
-      out:fade
-    >
-      <button class="btn btn-primary" on:click|preventDefault={() => {}}
-        >ทำให้สั้น</button
-      >
-      <input
-        type="text"
-        class="w-full bg-transparent mx-4 border-none outline-none"
-        placeholder="ลิงก์"
-      />
-    </div>
-    <ShortedLink/>
-  </SignedIn>
-  <div
-    class="carousel carousel-center w-full px-1 py-4 space-x-4 bg-neutral rounded-box md:justify-center justify-start"
-  >
-    <div
-      class="carousel-item feature-container-card sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start h-64 rounded-2xl"
-    >
-      <Icon icon="mdi:fast-forward" class="text-6xl" />
-      <h2 class="text-2xl">เร็วมาก</h2>
-      <p>
-        pcshs-short
-        ทำให้การเข้าใช้งานเว็ปต่างๆเร็วขึ้นอย่างเห็นได้ชัดด้วยการทำให้คุณเข้าใช้งาน
-        Link ที่สั้นลง
-      </p>
-    </div>
-    <div
-      class="carousel-item feature-container-card sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start h-64 rounded-2xl"
-    >
-      <Icon icon="mdi:link" class="text-6xl" />
-      <h2 class="text-2xl">สั้นกว่าเดิม</h2>
-      <p>
-        psh-short ทำให้ Link นั้นสั้นกว่าเดิมไม่ว่า Link
-        ที่คุณให้มานั้นจะยาวเพียงไหนก็ตาม
-      </p>
-    </div>
-    <div
-      class="carousel-item feature-container-card relative sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start h-64 rounded-2xl"
-    >
-      <div>
-        <Icon icon="mdi:play" class="text-6xl" />
-        <h2 class="text-2xl font-bold">เริ่มใช้งานเลยตอนนี้</h2>
-        <small>
-          พิเศษสำหรับอีเมล <code>@pccbr.ac.th</code> และ
-          <code>@pcshsbr.ac.th</code> เท่านั้น
-        </small>
-      </div>
-      <a href={$user ? "/dashboard" : "login"}
-        ><button
-          class="btn btn-primary absolute bottom-0 left-0 right-0 m-3 box-border"
-          >{$user ? "ไปยังแดชบอร์ด" : "สร้าง"}</button
-        ></a
-      >
-    </div>
-  </div>
-  <div>
-    <SignedOut>
-      <p class="text-center">
-        <a href="/login"
-          ><button class="btn btn-ghost btn-sm">เข้าสู่ระบบ</button></a
-        > เพื่อเริ่มใช้งาน
-      </p>
-    </SignedOut>
-  </div>
+<section class="max-w-[calc(792px-24px)] w-[calc(100vw-64px)] mx-auto mt-10">
+	<h1 class="text-6xl leading-snug">
+		<span class="flex w-[128px] h-[128px]">
+			<img src={linkGlass} class="object-cover w-full h-full" alt="" />
+		</span>
+		ทำให้ URL <span class="font-extrabold text-primary"> สั้นกว่าเดิม </span> ได้เลยตอนนี้
+	</h1>
+	<SignedIn>
+		<div class="url-container cursor-pointe bg-base-200 p-2 my-4 flex" in:fade out:fade>
+			<button class="btn btn-primary" on:click|preventDefault={() => {}}>ทำให้สั้น</button>
+			<input
+				type="text"
+				class="w-full bg-transparent mx-4 border-none outline-none"
+				placeholder="ลิงก์"
+			/>
+		</div>
+		<ShortedLink />
+	</SignedIn>
+	<div
+		class="carousel carousel-center w-full px-1 py-4 space-x-4 bg-neutral rounded-box md:justify-center justify-start"
+	>
+		<div
+			class="carousel-item feature-container-card sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start h-64 rounded-2xl"
+		>
+			<Icon icon="mdi:fast-forward" class="text-6xl" />
+			<h2 class="text-2xl">เร็วมาก</h2>
+			<p>
+				pcshs-short ทำให้การเข้าใช้งานเว็ปต่างๆเร็วขึ้นอย่างเห็นได้ชัดด้วยการทำให้คุณเข้าใช้งาน Link
+				ที่สั้นลง
+			</p>
+		</div>
+		<div
+			class="carousel-item feature-container-card sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start h-64 rounded-2xl"
+		>
+			<Icon icon="mdi:link" class="text-6xl" />
+			<h2 class="text-2xl">สั้นกว่าเดิม</h2>
+			<p>psh-short ทำให้ Link นั้นสั้นกว่าเดิมไม่ว่า Link ที่คุณให้มานั้นจะยาวเพียงไหนก็ตาม</p>
+		</div>
+		<div
+			class="carousel-item feature-container-card relative sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start h-64 rounded-2xl"
+		>
+			<div>
+				<Icon icon="mdi:play" class="text-6xl" />
+				<h2 class="text-2xl font-bold">เริ่มใช้งานเลยตอนนี้</h2>
+				<small>
+					พิเศษสำหรับอีเมล <code>@pccbr.ac.th</code> และ
+					<code>@pcshsbr.ac.th</code> เท่านั้น
+				</small>
+			</div>
+			<a href={$user ? '/dashboard' : 'login'}
+				><button class="btn btn-primary absolute bottom-0 left-0 right-0 m-3 box-border"
+					>{$user ? 'ไปยังแดชบอร์ด' : 'สร้าง'}</button
+				></a
+			>
+		</div>
+	</div>
+	<div>
+		<SignedOut>
+			<p class="text-center">
+				<a href="/login"><button class="btn btn-ghost btn-sm">เข้าสู่ระบบ</button></a> เพื่อเริ่มใช้งาน
+			</p>
+		</SignedOut>
+	</div>
 </section>
