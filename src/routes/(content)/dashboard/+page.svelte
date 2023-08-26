@@ -4,7 +4,7 @@
   import { SignedIn, SignedOut, userStore } from "sveltefire";
   import { auth, signIn,isSignedIn } from "$lib/firebase";
   import { onMount } from "svelte";
-
+  import ShortedLink from "$lib/components/ShortedLink.svelte";
   const user = userStore(auth);
 </script>
 
@@ -31,7 +31,7 @@
       <span class="font-extrabold text-primary">ลิงก์</span> ทั้งหมด
     </h1>
     <div
-      class="url-container cursor-pointer dark:bg-dark-base-50 bg-base-200 p-2 my-4 flex"
+      class="url-container cursor-pointer bg-base-200 p-2 my-4 flex"
       transition:fade|local={{ duration: 300 }}
     >
       <button class="btn btn-primary" on:click|preventDefault={() => {}}
@@ -42,6 +42,12 @@
         class="w-full bg-transparent mx-4 border-none outline-none"
         placeholder="ลิงก์"
       />
+    </div>
+    <div class="space-y-4">
+      <ShortedLink/>
+      <ShortedLink/>
+      <ShortedLink/>
+      <ShortedLink/>
     </div>
   </SignedIn>
 </section>

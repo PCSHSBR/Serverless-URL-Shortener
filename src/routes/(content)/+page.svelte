@@ -3,6 +3,7 @@
   import { fade } from "svelte/transition";
   import { SignedIn, SignedOut, userStore } from "sveltefire";
   import { auth, signIn } from "$lib/firebase";
+  import ShortedLink from "$lib/components/ShortedLink.svelte";
 
   const user = userStore(auth);
 </script>
@@ -17,7 +18,7 @@
   </h1>
   <SignedIn>
     <div
-      class="url-container cursor-pointer dark:bg-dark-base-50 bg-base-200 p-2 my-4 flex"
+      class="url-container cursor-pointe bg-base-200 p-2 my-4 flex"
       in:fade
       out:fade
     >
@@ -30,6 +31,7 @@
         placeholder="ลิงก์"
       />
     </div>
+    <ShortedLink/>
   </SignedIn>
   <div
     class="carousel carousel-center w-full px-1 py-4 space-x-4 bg-neutral rounded-box md:justify-center justify-start"
