@@ -4,17 +4,18 @@
   import { SignedIn, SignedOut, userStore } from "sveltefire";
   import { auth, signIn } from "$lib/firebase";
   import ShortedLink from "$lib/components/ShortedLink.svelte";
+  import linkGlass from "$lib/assets/linkGlass.png"
 
   const user = userStore(auth);
 </script>
 
 <section
-  class="max-w-[calc(792px-24px)] w-[calc(100vw-64px)] mx-auto {$user
-    ? 'mt-10'
-    : 'absolute top-1/2 -translate-y-1/2 right-0 left-0'}"
+  class="max-w-[calc(792px-24px)] w-[calc(100vw-64px)] mx-auto mt-10"
 >
   <h1 class="text-6xl leading-snug">
-    ทำให้ URL <span class="font-extrabold text-primary"> สั้นกว่าเดิม </span> ได้เลยตอนนี้
+     <span class="flex w-[128px] h-[128px]">
+      <img src="{linkGlass}" class="object-cover w-full h-full" alt="">
+    </span> ทำให้ URL <span class="font-extrabold text-primary"> สั้นกว่าเดิม </span> ได้เลยตอนนี้
   </h1>
   <SignedIn>
     <div
