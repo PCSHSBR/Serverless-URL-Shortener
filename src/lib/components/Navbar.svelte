@@ -12,6 +12,7 @@
   function toggleMenu() {
     console.log("toggle");
     menuState = !menuState;
+    fixMenu();
   }
   function fixMenu() {
     if (menuState){
@@ -74,7 +75,7 @@
     <SignedIn let:user let:signOut>
       <a href="/dashboard"
         ><button class="btn btn-primary"
-          ><Icon icon="material-symbols:dashboard" />แดชบอร์ด</button
+          ><Icon icon="material-symbols:dashboard" on:click={fixMenu}/>แดชบอร์ด</button
         ></a
       >
     </SignedIn>
