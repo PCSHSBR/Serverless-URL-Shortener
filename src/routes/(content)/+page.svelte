@@ -68,10 +68,12 @@
           <code>@pcshsbr.ac.th</code> เท่านั้น
         </small>
       </div>
-      <a href="{$user ? "/dashboard":"login"}"><button
-        class="btn btn-primary absolute bottom-0 left-0 right-0 m-3 box-border"
-        >{$user ? "ไปยังแดชบอร์ด":"สร้าง"}</button
-      ></a>
+      <a href={$user ? "/dashboard" : "login"}
+        ><button
+          class="btn btn-primary absolute bottom-0 left-0 right-0 m-3 box-border"
+          >{$user ? "ไปยังแดชบอร์ด" : "สร้าง"}</button
+        ></a
+      >
     </div>
   </div>
   <div>
