@@ -19,7 +19,7 @@
 	<title>แดชบอร์ด - PCSHSBR Short</title>
 </svelte:head>
 
-<section class="px-8 m-auto mx-auto mt-10">
+<section class="md:px-8 px-4 m-auto mx-auto mt-8">
 	<h1 class="text-6xl leading-snug">
 		<span class="font-extrabold text-primary">แดช</span>บอร์ด
 	</h1>

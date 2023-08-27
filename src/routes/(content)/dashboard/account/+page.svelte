@@ -19,7 +19,7 @@
 	<title>แดชบอร์ด/บัญชี - PCSHSBR Short</title>
 </svelte:head>
 
-<section class="px-8 m-auto mx-auto mt-10">
+<section class="md:px-8 px-4 m-auto mx-auto mt-8">
 	<h1 class="text-6xl leading-snug">
 		จัดการ<span class="font-extrabold text-primary">บัญชี</span>
 	</h1>

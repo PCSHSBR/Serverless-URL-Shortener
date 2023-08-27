@@ -1,7 +1,11 @@
 <script lang="ts">
 	import QrCanvas from '$lib/components/QrCanvas.svelte';
 	import Icon from '@iconify/svelte';
-	export let link: string = 'https://www.youtube.com/watch?v=zZdVwTjUtjg';
+	import { downloadUrlStore } from 'sveltefire';
+	export let link: string = 'https://phu.best/qqq';
+	export let editLink: string = '/dashboard/links/edit/qqq';
+	export let deleteLink: string = '/dashboard/links/delete/qqq?confirm=1';
+	export let originalLink: string = 'https://www.youtube.com/watch?v=zZdVwTjUtjg';
 	let imageqr: HTMLImageElement | null = null;
 
 	function DownloadQRImage() {
@@ -26,28 +30,33 @@
 	}
 </script>
 
-<div class="main-container">
-	<QrCanvas bind:imageele={imageqr} class="rounded-xl w-48 h-auto" content={link} />
-	<div>
-		<p><b>URL : </b><a class="link link-hover" href={link}>{link}</a></p>
-		<p><b>URL ที่สั้นลง : </b><a class="link link-hover" href="/fix">https://pcshsbr.space/q</a></p>
-		<div class="flex flex-row flex-wrap gap-2">
-			<button class="btn btn-primary" on:click={DownloadQRImage}
-				><Icon icon="mdi:download" />ดาวโหลด QR Code</button
-			>
-			<button class="btn btn-primary" on:click={copyQRImageToClipboars}
-				><Icon icon="mdi:copy" />คัดลอก QR Code</button
-			>
+<div class="flex gap-4 md:flex-row flex-col overflow-hidden md:justify-between justify-normal">
+	<div class="flex flex-row space-x-4">
+		<QrCanvas bind:imageele={imageqr} content={link} class="w-28 h-28" />
+		<div>
+			<div class="flex flex-wrap items-center">
+				<p>
+					URL : <a class="link link-hover" href={link}>{link.length > 20 ? link.slice(0, 20) + '...' : link}</a>
+				</p>
+				<button class="ml-2 btn btn-sm"><Icon icon="mdi:content-copy" /></button>
+			</div>
+			<div class="flex flex-wrap items-center">
+				<p>Original URL : <a class="link link-hover" href="{originalLink}">{originalLink.length > 30 ? originalLink.slice(0, 30) + '...' : originalLink}</a></p>
+				<button class="ml-2 btn btn-sm"><Icon icon="mdi:content-copy" /></button>
+			</div>
 		</div>
 	</div>
+	<div class="flex flex-wrap gap-2">
+		<button class="btn btn-sm btn-primary" on:click={copyQRImageToClipboars}
+			><Icon icon="mdi:content-copy" />คัดลอกภาพ</button
+		>
+		<button class="btn btn-sm btn-primary" on:click={DownloadQRImage}
+			><Icon icon="mdi:download" />ดาวโหลดภาพ</button
+		>
+		<button class="btn btn-sm btn-primary"><Icon icon="mdi:edit" />แก้ไข</button>
+		<button class="btn btn-sm btn-primary"><Icon icon="mdi:delete" /> ลบ</button>
+	</div>
 </div>
-
-<!-- <div class="toast toast-top toast-end">
-  <div class="alert alert-success flex">
-    <span>คัดลอกไปยัง Clipboard เรียบร้อยแล้ว!</span>
-    <button class="btn"><Icon icon="mdi:close"/></button>
-  </div>
-</div> -->
 
 <style lang="scss">
 	.main-container {
