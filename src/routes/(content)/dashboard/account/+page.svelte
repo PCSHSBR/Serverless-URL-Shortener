@@ -25,18 +25,18 @@
 	</h1>
 	<div>
 		<SignedIn let:auth>
-			<p>
-				ยินดีต้อนรับ <b>{auth.currentUser?.displayName}</b> | อีเมล:
-				<b>{auth.currentUser?.email}</b>
+			<p class="whitespace-pre-line">
+				ยินดีต้อนรับ <b>{auth.currentUser?.displayName}</b>
+				อีเมล: <b>{auth.currentUser?.email}</b>
 			</p>
 			<button
-				class="btn btn-sm btn-primary"
+				class="btn btn-sm btn-error"
 				on:click={async () => {
 					await auth.signOut();
 					if (!$user) {
 						goto('/');
 					}
-				}}>ออกจากระบบ</button
+				}}><Icon icon="mdi:logout"/>ออกจากระบบ</button
 			>
 		</SignedIn>
 		<SignedOut let:auth>

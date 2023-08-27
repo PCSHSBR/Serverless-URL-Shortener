@@ -70,3 +70,19 @@
 		}
 	}
 }
+
+.btn-error {
+	@apply relative;
+
+	&::before {
+		content: '';
+		@apply transition-all duration-150 border-4 border-transparent blur-md w-full h-full absolute;
+	}
+
+	&:hover {
+		&::before {
+			content: '';
+			@apply border-4 border-error blur-md w-full h-full absolute;
+		}
+	}
+}

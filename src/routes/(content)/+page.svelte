@@ -9,6 +9,10 @@
 	const user = userStore(auth);
 </script>
 
+<svelte:head>
+	<title>PCSHSBR Short</title>
+</svelte:head>
+
 <section class="max-w-[calc(792px-24px)] w-[calc(100vw-64px)] mx-auto mt-10">
 	<h1 class="text-6xl leading-snug">
 		<span class="flex w-[128px] h-[128px]">
