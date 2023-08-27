@@ -15,6 +15,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>แดชบอร์ด/บัญชี - PCSHSBR Short</title>
+</svelte:head>
+
 <section class="px-8 m-auto mx-auto mt-10">
 	<h1 class="text-6xl leading-snug">
 		จัดการ<span class="font-extrabold text-primary">บัญชี</span>

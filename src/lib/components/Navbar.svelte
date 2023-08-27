@@ -49,7 +49,7 @@
 	</label>
 	<div class="flex-1">
 		<a href="/" class="btn btn-ghost normal-case text-xl"
-			><Logo class="w-10 h-10 drop-shadow-md" /><span class="md:block hidden"
+			><Logo class="w-10 h-10 drop-shadow-md text-primary" /><span class="md:block hidden"
 				>PCSHSBR <small>Short</small></span
 			></a
 		>

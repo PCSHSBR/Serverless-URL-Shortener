@@ -17,7 +17,7 @@ const config = {
 				light: {
 					text: '#0c221d',
 					'base-100': '#FFFFFF',
-					primary: '#1EFCCC',
+					primary: '#2fdada',
 					secondary: '#ebf9f9',
 					accent: '#1d5448',
 					error: '#e4725e',

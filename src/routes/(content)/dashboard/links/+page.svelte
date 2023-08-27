@@ -15,6 +15,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>แดชบอร์ด/ลิ้งก์ทั้งหมด - PCSHSBR Short</title>
+</svelte:head>
+
 <section class="px-8 m-auto mx-auto mt-10">
 	<SignedIn>
 		<h1 class="text-6xl leading-snug">

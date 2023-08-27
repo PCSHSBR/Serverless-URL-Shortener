@@ -15,6 +15,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>แดชบอร์ด - PCSHSBR Short</title>
+</svelte:head>
+
 <section class="px-8 m-auto mx-auto mt-10">
 	<h1 class="text-6xl leading-snug">
 		<span class="font-extrabold text-primary">แดช</span>บอร์ด

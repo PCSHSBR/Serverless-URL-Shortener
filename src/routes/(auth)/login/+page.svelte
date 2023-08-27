@@ -12,6 +12,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>เข้าสู่ระบบ - PCSHSBR Short</title>
+</svelte:head>
+
 <section class="">
 	<div class="absolute w-full h-[calc(100vh-4.25rem)] object-cover overflow-hidden">
 		<h1 class="text-[12rem] w-full h-full text-base-content/80">
