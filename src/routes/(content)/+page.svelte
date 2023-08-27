@@ -29,7 +29,7 @@
 				placeholder="ลิงก์"
 			/>
 		</div>
-		<ShortedLink />
+		<ShortedLink class="bg-base-200 p-4 rounded-2xl"/>
 	</SignedIn>
 	<div
 		class="carousel carousel-center w-full px-1 py-4 space-x-4 bg-neutral rounded-box md:justify-center justify-start"

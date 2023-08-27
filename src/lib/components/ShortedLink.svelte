@@ -3,10 +3,12 @@
 	import Icon from '@iconify/svelte';
 	import { downloadUrlStore } from 'sveltefire';
 	export let link: string = 'https://phu.best/qqq';
+	export {clazz as class}
 	export let editLink: string = '/dashboard/links/edit/qqq';
 	export let deleteLink: string = '/dashboard/links/delete/qqq?confirm=1';
 	export let originalLink: string = 'https://www.youtube.com/watch?v=zZdVwTjUtjg';
 	let imageqr: HTMLImageElement | null = null;
+	let clazz="";
 
 	function DownloadQRImage() {
 		let a = document.createElement('a');
@@ -30,8 +32,8 @@
 	}
 </script>
 
-<div class="flex gap-4 md:flex-row flex-col overflow-hidden md:justify-between justify-normal">
-	<div class="flex flex-row space-x-4">
+<div class="{clazz} flex gap-4 md:flex-row flex-col overflow-hidden md:justify-between justify-normal">
+	<div class="flex md:flex-row flex-col items-center space-x-4">
 		<QrCanvas bind:imageele={imageqr} content={link} class="w-28 h-28" />
 		<div>
 			<div class="flex flex-wrap items-center">
@@ -46,7 +48,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="flex flex-wrap gap-2">
+	<div class="flex flex-wrap md:justify-start justify-center gap-2">
 		<button class="btn btn-sm btn-primary" on:click={copyQRImageToClipboars}
 			><Icon icon="mdi:content-copy" />คัดลอกภาพ</button
 		>
