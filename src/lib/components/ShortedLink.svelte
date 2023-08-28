@@ -4,6 +4,8 @@
 	import { downloadUrlStore } from 'sveltefire';
 	export let link: string = 'https://phu.best/qqq';
 	export {clazz as class}
+	export let views: number = 512;
+	export let statisticsLink: string = '/dashboard/links/statistics/qqq';
 	export let editLink: string = '/dashboard/links/edit/qqq';
 	export let deleteLink: string = '/dashboard/links/delete/qqq?confirm=1';
 	export let originalLink: string = 'https://www.youtube.com/watch?v=zZdVwTjUtjg';
@@ -49,6 +51,7 @@
 		</div>
 	</div>
 	<div class="flex flex-wrap md:justify-start justify-center gap-2">
+		<button class="btn btn-sm btn-primary"><Icon icon="mdi:eye" />ดูสถิติ</button>
 		<button class="btn btn-sm btn-primary" on:click={copyQRImageToClipboars}
 			><Icon icon="mdi:content-copy" />คัดลอกภาพ</button
 		>

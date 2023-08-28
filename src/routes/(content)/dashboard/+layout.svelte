@@ -1,6 +1,16 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+	import { Collection, SignedIn, SignedOut, userStore } from 'sveltefire';
+	import { auth, signIn } from '$lib/firebase';
+	import { goto } from '$app/navigation';
+	const user = userStore(auth);
+	onMount(async () => {
+		if (!$user) {
+			goto(`/login?redirect=${$page.url.pathname}`);
+		}
+	});
 </script>
 
 <div class="relative hidden md:flex flex-row">

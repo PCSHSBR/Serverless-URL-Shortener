@@ -4,11 +4,13 @@
 	import { signIn, auth } from '$lib/firebase';
 	import { userStore, SignedIn } from 'sveltefire';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
 	const user = userStore(auth);
 
 	$: if ($user) {
-		goto('/dashboard');
+		goto($page.url.searchParams.get('redirect') ?? "/dashboard");
 	}
 </script>
 

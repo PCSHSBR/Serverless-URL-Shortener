@@ -7,13 +7,6 @@
 	import { goto } from '$app/navigation';
 	import Chart from '$lib/components/Chart.svelte';
 	import ShortedLink from '$lib/components/ShortedLink.svelte';
-	const user = userStore(auth);
-
-	onMount(async () => {
-		if (!$user) {
-			goto('/login');
-		}
-	});
 </script>
 
 <svelte:head>

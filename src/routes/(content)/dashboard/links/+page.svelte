@@ -36,46 +36,40 @@
 				placeholder="ลิงก์"
 			/>
 		</div>
-		<div class="bg-base-200 p-4 space-y-4 rounded-xl">
-			<div class="form-control gap-2 ">
-				<div class="input-group shadow-md">
-				  <input type="text" placeholder="ค้นหา" class="w-full input input-bordered" />
-				  <button class="btn btn-square">
+		<div class="form-control gap-2 bg-base-200 p-4 mb-4 rounded-xl">
+			<div class="input-group shadow-md">
+				<input type="text" placeholder="ค้นหา" class="w-full input input-bordered" />
+				<button class="btn btn-square">
 					<Icon icon="mdi:magnify" />
-				  </button>
-				  <button class="btn btn-square">
+				</button>
+				<button class="btn btn-square">
 					<Icon icon="mdi:filter" />
-				  </button>
-				</div>
-				<div class=" input-group w-auto md:mx-0 mx-auto">
-					<button class="btn bg-base-100">
-						1
-					  </button>
-					<button class="btn bg-base-100">
-						<Icon icon="mdi:arrow-left" />
-					  </button>
-					  <button class="btn bg-base-100">
-						1/40
-					  </button>
-					  <button class="btn bg-base-100">
-						<Icon icon="mdi:arrow-right" />
-					  </button>
-					  <button class="btn bg-base-100">
-						40
-					  </button>
-				</div>
-			  </div>
-			<ShortedLink link="https://youtu.be/Yk8jV7r6VMk?si=HcuWnZ6O__8uC4XG"/>	
-			<hr>
-			<ShortedLink link="https://youtu.be/gOgpdp3lP8M?si=fkZtQCrtMb_yuw6r"/>	
-			<hr>
-			<ShortedLink link="https://youtu.be/gOgpdp3lP8M?si=fkZtQCrtMb_yuw6r"/>	
-			<hr>
-			<ShortedLink/>				
-			<hr>
-			<ShortedLink/>	
-			<hr>
-			<ShortedLink/>	
+				</button>
+			</div>
+			<div class=" input-group w-auto md:mx-0 mx-auto">
+				<button class="btn bg-base-100"> 1 </button>
+				<button class="btn bg-base-100">
+					<Icon icon="mdi:arrow-left" />
+				</button>
+				<button class="btn bg-base-100"> 1/40 </button>
+				<button class="btn bg-base-100">
+					<Icon icon="mdi:arrow-right" />
+				</button>
+				<button class="btn bg-base-100"> 40 </button>
+			</div>
+		</div>
+		<div class="bg-base-200 p-4 space-y-4 rounded-xl">
+			<ShortedLink link="https://youtu.be/Yk8jV7r6VMk?si=HcuWnZ6O__8uC4XG" />
+			<hr />
+			<ShortedLink link="https://youtu.be/gOgpdp3lP8M?si=fkZtQCrtMb_yuw6r" />
+			<hr />
+			<ShortedLink link="https://youtu.be/gOgpdp3lP8M?si=fkZtQCrtMb_yuw6r" />
+			<hr />
+			<ShortedLink />
+			<hr />
+			<ShortedLink />
+			<hr />
+			<ShortedLink />
 		</div>
 	</SignedIn>
 </section>
