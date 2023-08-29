@@ -20,8 +20,7 @@
 	<div class="space-y-4">
 		<SignedIn let:auth>
 			<p>
-				ยินดีต้อนรับ <b>{auth.currentUser?.displayName}</b> | อีเมล:
-				<b>{auth.currentUser?.email}</b>
+				ยินดีต้อนรับ <b>{auth.currentUser?.displayName}</b>
 			</p>
 			<a href="/dashboard/account"
 				><button class="btn btn-primary"><Icon icon="mdi:account" />จัดการบัญชี</button></a
