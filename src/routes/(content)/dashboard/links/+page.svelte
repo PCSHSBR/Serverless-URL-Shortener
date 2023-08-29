@@ -7,6 +7,7 @@
 	import { goto } from '$app/navigation';
 	import ShortedLink from '$lib/components/ShortedLink.svelte';
 	import QrCanvas from '$lib/components/QrCanvas.svelte';
+	import CreateShortenedLink from '$lib/components/CreateShortenedLink.svelte';
 	const user = userStore(auth);
 
 	onMount(async () => {
@@ -17,25 +18,16 @@
 </script>
 
 <svelte:head>
-	<title>แดชบอร์ด/ลิ้งก์ทั้งหมด - PCSHSBR Short</title>
+	<title>ลิงก์ทั้งหมด - แดชบอร์ด - PCSHSBR Short</title>
 </svelte:head>
 
 <section class="md:px-8 px-4 m-auto mx-auto mt-8">
 	<SignedIn>
 		<h1 class="text-6xl leading-snug">
-			<span class="font-extrabold text-primary">ลิงก์</span> ทั้งหมด
+			<span class="font-extrabold text-primary">ลิงก์</span>ทั้งหมด
 		</h1>
-		<div
-			class="url-container cursor-pointer bg-base-200 p-2 my-4 flex"
-			transition:fade|local={{ duration: 300 }}
-		>
-			<button class="btn btn-primary" on:click|preventDefault={() => {}}>ทำให้สั้น</button>
-			<input
-				type="text"
-				class="w-full bg-transparent mx-4 border-none outline-none"
-				placeholder="ลิงก์"
-			/>
-		</div>
+		<CreateShortenedLink showAdvance />
+
 		<div class="form-control gap-2 bg-base-200 p-4 mb-4 rounded-xl">
 			<div class="input-group shadow-md">
 				<input type="text" placeholder="ค้นหา" class="w-full input input-bordered" />

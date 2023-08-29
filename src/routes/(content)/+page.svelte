@@ -29,30 +29,34 @@
 				placeholder="ลิงก์"
 			/>
 		</div>
-		<ShortedLink class="bg-base-200 p-4 rounded-2xl"/>
+		<div>
+			<a href="/dashboard" class="link"> ไปยังแดชบอร์ด</a>
+		</div>
 	</SignedIn>
 	<div
-		class="carousel carousel-center w-full px-1 py-4 space-x-4 bg-neutral rounded-box md:justify-center justify-start"
+		class="carousel carousel-center w-full px-4 py-8 space-x-4 bg-neutral rounded-box md:justify-center justify-start"
 	>
 		<div
-			class="carousel-item feature-container-card sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start h-64 rounded-2xl"
+			class="carousel-item feature-container-card sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start h-64 rounded-2xl gap-3"
 		>
-			<Icon icon="mdi:fast-forward" class="text-6xl" />
-			<h2 class="text-2xl">เร็วมาก</h2>
+			<Icon icon="mdi:lock-check" class="text-6xl" />
+			<h2 class="text-2xl">ปลอดภัย</h2>
 			<p>
-				pcshs-short ทำให้การเข้าใช้งานเว็ปต่างๆเร็วขึ้นอย่างเห็นได้ชัดด้วยการทำให้คุณเข้าใช้งาน Link
-				ที่สั้นลง
+				ลิงก์ย่อจะสร้างได้ก็ต่อเมื่อเว็บไซต์อยู่ในรายการที่อนุญาต และต้องยืนยันตัวตนก่อนสร้างลิงก์
 			</p>
 		</div>
 		<div
-			class="carousel-item feature-container-card sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start h-64 rounded-2xl"
+			class="carousel-item feature-container-card sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start gap-3 h-64 rounded-2xl"
 		>
 			<Icon icon="mdi:link" class="text-6xl" />
 			<h2 class="text-2xl">สั้นกว่าเดิม</h2>
-			<p>psh-short ทำให้ Link นั้นสั้นกว่าเดิมไม่ว่า Link ที่คุณให้มานั้นจะยาวเพียงไหนก็ตาม</p>
+			<p>
+				ลิงก์ย่อช่วยตัดปัญหาลิงก์ยาวเกินไปจนดึงดูดความสนใจจากเนื้อหาข้อความในโพสต์ได้
+				และผู้ใช้ยังพิมพ์บนอุปกรณ์อื่นหรือจดจำได้ง่ายกว่า
+			</p>
 		</div>
 		<div
-			class="carousel-item feature-container-card relative sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start h-64 rounded-2xl"
+			class="carousel-item feature-container-card relative sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start gap-3 h-64 rounded-2xl"
 		>
 			<div>
 				<Icon icon="mdi:play" class="text-6xl" />
@@ -64,7 +68,7 @@
 			</div>
 			<a href={$user ? '/dashboard' : 'login'}
 				><button class="btn btn-primary absolute bottom-0 left-0 right-0 m-3 box-border"
-					>{$user ? 'ไปยังแดชบอร์ด' : 'สร้าง'}</button
+					>{$user ? 'ไปยังแดชบอร์ด' : 'เริ่มต้นใช้งาน'}</button
 				></a
 			>
 		</div>
