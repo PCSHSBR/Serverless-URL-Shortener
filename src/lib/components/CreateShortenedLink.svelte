@@ -11,15 +11,24 @@
 
 	const createLinkSchema = z.object({
 		link: z.string().url(),
-		domain: z.string().optional(),
+		domain: z
+			.string()
+			.default(DEFAULT_DOMAIN)
+			.refine((value) => {
+				if (value) {
+					return availableDomain.includes(value);
+				}
+				return true;
+			}, 'Invalid domain')
+			.optional(),
 		customSlug: z.string().optional(),
-		random: z.boolean().optional(),
+		random: z.boolean().optional().default(false),
 		user: z
 			.object({
 				uid: z.string(),
-				displayName: z.string(),
-				email: z.string().email(),
-				photoURL: z.string().url(),
+				displayName: z.string().nullable().optional(),
+				email: z.string().email().nullable(),
+				photoURL: z.string().url().nullable(),
 				emailVerified: z.boolean(),
 				phoneNumber: z.string().nullable().optional(),
 				isAnonymous: z.boolean(),
@@ -27,18 +36,12 @@
 				providerData: z.array(
 					z.object({
 						uid: z.string(),
-						displayName: z.string(),
-						email: z.string().email(),
-						photoURL: z.string().url(),
+						displayName: z.string().nullable(),
+						email: z.string().email().nullable(),
+						photoURL: z.string().url().nullable(),
 						providerId: z.string()
 					})
-				),
-				stsTokenManager: z.object({
-					apiKey: z.string().optional(),
-					refreshToken: z.string(),
-					accessToken: z.string(),
-					expirationTime: z.number()
-				})
+				)
 			})
 			.nullable()
 	});
@@ -68,12 +71,10 @@
 		<button
 			class="btn btn-primary"
 			on:click|preventDefault={async () => {
-				console.log(
-					await createShortenedLink({
-						link,
-						user: $user
-					})
-				);
+				await createShortenedLink({
+					link,
+					user: $user
+				}).catch(console.error);
 			}}>ทำให้สั้น</button
 		>
 		<input

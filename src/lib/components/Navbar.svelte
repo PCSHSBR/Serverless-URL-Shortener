@@ -41,7 +41,11 @@
 	</div>
 {/if}
 
-<nav class="navbar sticky top-0 z-50 {$page.url.pathname.match('/dashboard') ? 'bg-base-200' : 'backdrop-blur-sm'}">
+<nav
+	class="navbar sticky top-0 z-50 {$page.url.pathname.match('/dashboard')
+		? 'bg-base-200'
+		: 'backdrop-blur-sm'}"
+>
 	<label class="md:hidden grid btn btn-ghost swap swap-rotate">
 		<input type="checkbox" bind:checked={menuState} on:click={fixMenu} />
 		<Icon class="text-xl swap-on fill-current" icon="mdi:close" />

@@ -27,26 +27,23 @@
 			</button>
 		</a>
 		<a href="/dashboard/adminpanel/users">
-		<button class="btn btn-lg h-auto py-8 w-full justify-between">
-			<div>
-				<div class="flex items-center gap-4">
-					<Icon icon="mdi:link" class="text-xl" />จัดการลิงก์
+			<button class="btn btn-lg h-auto py-8 w-full justify-between">
+				<div>
+					<div class="flex items-center gap-4">
+						<Icon icon="mdi:link" class="text-xl" />จัดการลิงก์
+					</div>
+					<p class="text-sm font-normal text-left">จัดการลิงก์ที่ถูกทำให้สั้นลงแล้ว</p>
 				</div>
-				<p class="text-sm font-normal text-left">
-					จัดการลิงก์ที่ถูกทำให้สั้นลงแล้ว
-				</p>
-			</div>
-			<Icon icon="mdi:arrow-right" class="text-xl" />
-		</button>
-	</a>
+				<Icon icon="mdi:arrow-right" class="text-xl" />
+			</button>
+		</a>
 	</div>
 	<div class="grid md:grid-cols-2 grid-cols-1 gap-4">
 		<div class=" bg-base-200 w-full p-5 rounded-xl">
 			<h2 class="text-xl">จำนวนผู้ใช้งาน</h2>
 			<div class="inline-flex items-end">
 				<span class="text-3xl font-bold">2.5 พัน</span><span class="pl-2 inline-flex"
-					><Icon class="pr-2 text-2xl" icon="material-symbols:arrow-outward" />10%
-					จากอาทิทย์ที่แล้ว</span
+					><Icon class="pr-2 text-2xl" icon="material-symbols:arrow-outward" />10% จากอาทิทย์ที่แล้ว</span
 				>
 			</div>
 			<Chart />

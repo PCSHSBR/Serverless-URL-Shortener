@@ -10,7 +10,7 @@
 	const user = userStore(auth);
 
 	$: if ($user) {
-		goto($page.url.searchParams.get('redirect') ?? "/dashboard");
+		goto($page.url.searchParams.get('redirect') ?? '/dashboard');
 	}
 </script>
 

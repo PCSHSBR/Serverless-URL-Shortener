@@ -74,12 +74,12 @@
 					: 'btn-ghost'}"><Icon icon="mdi:account" /></button
 			></a
 		>
-    <a href="/dashboard/adminpanel"
-    ><button
-      class="btn w-full btn-lg {$page.url.pathname === '/dashboard/adminpanel'
-        ? 'btn-primary'
-        : 'btn-ghost'}"><Icon icon="ic:round-admin-panel-settings" /></button
-    ></a
-  >
+		<a href="/dashboard/adminpanel"
+			><button
+				class="btn w-full btn-lg {$page.url.pathname === '/dashboard/adminpanel'
+					? 'btn-primary'
+					: 'btn-ghost'}"><Icon icon="ic:round-admin-panel-settings" /></button
+			></a
+		>
 	</div>
 </div>

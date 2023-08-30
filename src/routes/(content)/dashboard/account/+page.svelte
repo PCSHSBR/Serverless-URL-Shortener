@@ -36,7 +36,7 @@
 					if (!$user) {
 						goto('/');
 					}
-				}}><Icon icon="mdi:logout"/>ออกจากระบบ</button
+				}}><Icon icon="mdi:logout" />ออกจากระบบ</button
 			>
 		</SignedIn>
 		<SignedOut let:auth>

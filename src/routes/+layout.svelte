@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" type="image/x-icon" href="{Icon100x100}">
+	<link rel="icon" type="image/x-icon" href={Icon100x100} />
 </svelte:head>
 
 <FirebaseApp {auth} {firestore} {storage}>
