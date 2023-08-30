@@ -18,15 +18,13 @@
 		bottom: -2px;
 		left: -2px;
 		right: -2px;
-		background: linear-gradient(
-			90deg,
-			hsl(var(--p)),
-			transparent,
-			transparent,
-			transparent,
-			transparent,
-			hsl(var(--p))
-		);
+		background: linear-gradient(90deg,
+				hsl(var(--p)),
+				transparent,
+				transparent,
+				transparent,
+				transparent,
+				hsl(var(--p)));
 		content: '';
 		z-index: -1;
 		border-radius: 1rem;
@@ -85,4 +83,20 @@
 			@apply border-4 border-error blur-md w-full h-full absolute;
 		}
 	}
+}
+
+::-webkit-scrollbar {
+	width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+	@apply bg-base-100;
+}
+
+::-webkit-scrollbar-thumb {
+	@apply rounded-lg bg-primary/50;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	@apply bg-primary/100;
 }

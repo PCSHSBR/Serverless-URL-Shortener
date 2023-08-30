@@ -6,7 +6,7 @@
 	import { auth, signIn } from '$lib/firebase';
 	import { goto } from '$app/navigation';
 	import Chart from '$lib/components/Chart.svelte';
-	import ShortedLink from '$lib/components/ShortedLink.svelte';
+	import ShortedLink from '$lib/components/ShortenLink/ShortedLink.svelte';
 </script>
 
 <svelte:head>

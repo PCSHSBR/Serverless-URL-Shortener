@@ -6,7 +6,7 @@
 	import { redirect } from '@sveltejs/kit';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import Logo from '$lib/assets/Icon.svelte';
+	import Logo from '$lib/assets/ChainIcon.svelte';
 	import { onMount } from 'svelte';
 	import { dev } from '$app/environment';
 

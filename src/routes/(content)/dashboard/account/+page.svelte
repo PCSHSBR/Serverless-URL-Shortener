@@ -5,7 +5,7 @@
 	import { Collection, SignedIn, SignedOut, userStore } from 'sveltefire';
 	import { auth, signIn } from '$lib/firebase';
 	import { goto } from '$app/navigation';
-	import ShortedLink from '$lib/components/ShortedLink.svelte';
+	import ShortedLink from '$lib/components/ShortenLink/ShortedLink.svelte';
 	const user = userStore(auth);
 
 	onMount(async () => {

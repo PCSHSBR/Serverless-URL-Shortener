@@ -2,6 +2,7 @@
 	export { clazz as class };
 	import Chart from 'chart.js/auto';
 	import { onMount } from 'svelte';
+	import { twMerge } from 'tailwind-merge';
 	let clazz = '';
 
 	let ctx: HTMLCanvasElement;
@@ -36,4 +37,4 @@
 	});
 </script>
 
-<canvas class="chart {clazz}" bind:this={ctx} />
+<canvas class={twMerge('chart', clazz)} bind:this={ctx} />

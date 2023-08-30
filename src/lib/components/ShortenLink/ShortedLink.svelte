@@ -1,7 +1,9 @@
 <script lang="ts">
 	import QrCanvas from '$lib/components/QrCanvas.svelte';
 	import Icon from '@iconify/svelte';
-	import { downloadUrlStore } from 'sveltefire';
+	import ShowLinkField from './ShowLinkField.svelte';
+	import { twMerge } from 'tailwind-merge';
+	import { dev } from '$app/environment';
 	export let link: string = 'https://phu.best/qqq';
 	export { clazz as class };
 	export let views: number = 512;
@@ -13,12 +15,14 @@
 	let clazz = '';
 
 	function DownloadQRImage() {
-		let a = document.createElement('a');
+		const a = document.createElement('a');
+		if (!imageqr) return dev && console.error('imageqr is null');
 		a.href = imageqr.src;
 		a.download = 'qr.png';
 		a.click();
 	}
 	async function copyQRImageToClipboars() {
+		if (!imageqr) return dev && console.error('imageqr is null');
 		try {
 			const data = await fetch(imageqr.src);
 			const blob = await data.blob();
@@ -35,30 +39,16 @@
 </script>
 
 <div
-	class="{clazz} flex gap-4 md:flex-row flex-col overflow-hidden md:justify-between justify-normal"
+	class={twMerge('flex gap-4 md:flex-row flex-col md:justify-between justify-normal p-4', clazz)}
 >
-	<div class="flex md:flex-row flex-col items-center space-x-4">
+	<div class="flex md:flex-row flex-col items-center gap-4">
 		<QrCanvas bind:imageele={imageqr} content={link} class="w-28 h-28" />
-		<div>
-			<div class="flex flex-wrap items-center">
-				<p>
-					URL : <a class="link link-hover" href={link}
-						>{link.length > 20 ? link.slice(0, 20) + '...' : link}</a
-					>
-				</p>
-				<button class="ml-2 btn btn-sm"><Icon icon="mdi:content-copy" /></button>
-			</div>
-			<div class="flex flex-wrap items-center">
-				<p>
-					Original URL : <a class="link link-hover" href={originalLink}
-						>{originalLink.length > 30 ? originalLink.slice(0, 30) + '...' : originalLink}</a
-					>
-				</p>
-				<button class="ml-2 btn btn-sm"><Icon icon="mdi:content-copy" /></button>
-			</div>
+		<div class="flex flex-col w-full">
+			<ShowLinkField title="ลิงก์ย่อ" {link} />
+			<ShowLinkField title="ปลายทาง" link={originalLink} />
 		</div>
 	</div>
-	<div class="flex flex-wrap md:justify-start justify-center gap-2">
+	<div class="text-sm flex flex-wrap md:justify-start justify-center gap-2">
 		<button class="btn btn-sm btn-primary"><Icon icon="mdi:eye" />ดูสถิติ</button>
 		<button class="btn btn-sm btn-primary" on:click={copyQRImageToClipboars}
 			><Icon icon="mdi:content-copy" />คัดลอกภาพ</button

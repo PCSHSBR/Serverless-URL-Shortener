@@ -5,7 +5,7 @@
 	import { Collection, SignedIn, SignedOut, userStore } from 'sveltefire';
 	import { auth, signIn } from '$lib/firebase';
 	import { goto } from '$app/navigation';
-	import ShortedLink from '$lib/components/ShortedLink.svelte';
+	import ShortedLink from '$lib/components/ShortenLink/ShortedLink.svelte';
 	import QrCanvas from '$lib/components/QrCanvas.svelte';
 	import CreateShortenedLink from '$lib/components/CreateShortenedLink.svelte';
 	const user = userStore(auth);
@@ -50,17 +50,12 @@
 				<button class="btn bg-base-100"> 40 </button>
 			</div>
 		</div>
-		<div class="bg-base-200 p-4 space-y-4 rounded-xl">
-			<ShortedLink link="https://youtu.be/Yk8jV7r6VMk?si=HcuWnZ6O__8uC4XG" />
-			<hr />
-			<ShortedLink link="https://youtu.be/gOgpdp3lP8M?si=fkZtQCrtMb_yuw6r" />
-			<hr />
-			<ShortedLink link="https://youtu.be/gOgpdp3lP8M?si=fkZtQCrtMb_yuw6r" />
-			<hr />
+		<div class="bg-base-200 p-4 space-y-4 rounded-xl divide-y-2 divide-base-100">
+			<ShortedLink link="https://youtu.be/Yk8jV7r6VMk" />
+			<ShortedLink link="https://youtu.be/gOgpdp3lP8M" />
+			<ShortedLink link="https://youtu.be/gOgpdp3lP8M" />
 			<ShortedLink />
-			<hr />
 			<ShortedLink />
-			<hr />
 			<ShortedLink />
 		</div>
 	</SignedIn>

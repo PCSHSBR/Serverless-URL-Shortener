@@ -2,10 +2,10 @@
 	import qrcode from 'qrcode';
 	import { onMount } from 'svelte';
 
-	let clazz: string = '';
+	let classes: string = '';
 	export let width: number = 164;
 	export let height: number = 164;
-	export { clazz as class };
+	export { classes as class };
 	export let content = 'https://pcshs-short.web.app';
 	export let imageele: HTMLImageElement | null = null;
 
@@ -18,4 +18,4 @@
 	});
 </script>
 
-<img src="" bind:this={imageele} class={clazz} alt="qr" />
+<img src="" bind:this={imageele} class={classes} alt="qr" />
