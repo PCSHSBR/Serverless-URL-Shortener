@@ -2,65 +2,32 @@
 	import { fade } from 'svelte/transition';
 	export let showAdvance = false;
 	import { userStore } from 'sveltefire';
-	import { auth } from '$lib/firebase';
-	import { isURL } from '$lib/utils';
-	import type { User } from 'firebase/auth';
-	import { DEFAULT_DOMAIN, availableDomain } from '$lib/dynamic-link';
-	import { z } from 'zod';
+	import { auth } from '$lib/client/firebase';
+	import { createLink } from '$lib/client/dynamic-link';
+	import Icon from '@iconify/svelte';
 	const user = userStore(auth);
-
-	const createLinkSchema = z.object({
-		link: z.string().url(),
-		domain: z
-			.string()
-			.default(DEFAULT_DOMAIN)
-			.refine((value) => {
-				if (value) {
-					return availableDomain.includes(value);
-				}
-				return true;
-			}, 'Invalid domain')
-			.optional(),
-		customSlug: z.string().optional(),
-		random: z.boolean().optional().default(false),
-		user: z
-			.object({
-				uid: z.string(),
-				displayName: z.string().nullable().optional(),
-				email: z.string().email().nullable(),
-				photoURL: z.string().url().nullable(),
-				emailVerified: z.boolean(),
-				phoneNumber: z.string().nullable().optional(),
-				isAnonymous: z.boolean(),
-				tenantId: z.string().nullable().optional(),
-				providerData: z.array(
-					z.object({
-						uid: z.string(),
-						displayName: z.string().nullable(),
-						email: z.string().email().nullable(),
-						photoURL: z.string().url().nullable(),
-						providerId: z.string()
-					})
-				)
-			})
-			.nullable()
-	});
-
-	type CreateLinkOptions = z.infer<typeof createLinkSchema>;
-
-	async function createShortenedLink(options: CreateLinkOptions) {
-		const parsedData = createLinkSchema.parse(options);
-		const { link, domain, customSlug, random, user: __user } = parsedData;
-		console.log({
-			link,
-			domain,
-			customSlug,
-			random,
-			user: __user
-		});
-	}
-
 	let link = '';
+	let linkCreateError: string[] = [];
+
+	let successShortLink: string | undefined = '';
+
+	async function onSubmitNewLink() {
+		linkCreateError = [];
+		if (link.length === 0) {
+			linkCreateError.push('กรุณากรอกลิงก์');
+			return;
+		}
+		const result = await createLink({
+			link,
+			domain: 'pcshsbr.page.link'
+		});
+		if (result?.error) {
+			linkCreateError.push(...result?.error.issues.map((issue) => issue.message));
+			linkCreateError = linkCreateError.filter((v, i, a) => a.indexOf(v) === i);
+			return;
+		}
+		successShortLink = result?.shortLink;
+	}
 </script>
 
 <div>
@@ -68,15 +35,7 @@
 		class="url-container cursor-pointer bg-base-200 p-2 my-4 flex"
 		transition:fade|local={{ duration: 300 }}
 	>
-		<button
-			class="btn btn-primary"
-			on:click|preventDefault={async () => {
-				await createShortenedLink({
-					link,
-					user: $user
-				}).catch(console.error);
-			}}>ทำให้สั้น</button
-		>
+		<button class="btn btn-primary" on:click|preventDefault={onSubmitNewLink}>ทำให้สั้น</button>
 		<input
 			type="text"
 			bind:value={link}
@@ -84,6 +43,18 @@
 			placeholder="ลิงก์"
 		/>
 	</div>
+	{#if linkCreateError.length > 0}
+		<div class="text-xs text-error alert my-3">
+			<Icon icon="mdi:alert-circle" class="h-6 w-6" />
+			<ul class="list-disc list-inside">
+				{#each linkCreateError as em}
+					<li>
+						{em}
+					</li>
+				{/each}
+			</ul>
+		</div>
+	{/if}
 	{#if showAdvance}
 		<!-- TODO: add advance option here -->
 		<!-- <div class="collapse collapse-arrow p-0 bg-black">
@@ -91,5 +62,12 @@
 			<div class="collapse-title m-0 p-2 after:top-1">ขั้นสูง</div>
 			<div class="collapse-content text-xs">รายการขั้นสูง</div>
 		</div> -->
+	{/if}
+	{#if successShortLink}
+		<div class="alert alert-success">
+			<span>
+				{successShortLink}
+			</span>
+		</div>
 	{/if}
 </div>

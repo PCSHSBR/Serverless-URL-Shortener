@@ -3,7 +3,7 @@
 	import { fade, slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import { Collection, SignedIn, SignedOut, userStore } from 'sveltefire';
-	import { auth, signIn } from '$lib/firebase';
+	import { auth, signIn } from '$lib/client/firebase';
 	import { goto } from '$app/navigation';
 	import Chart from '$lib/components/Chart.svelte';
 	import ShortedLink from '$lib/components/ShortenLink/ShortedLink.svelte';

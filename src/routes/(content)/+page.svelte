@@ -2,7 +2,7 @@
 	import Icon from '@iconify/svelte';
 	import { fade } from 'svelte/transition';
 	import { SignedIn, SignedOut, userStore } from 'sveltefire';
-	import { auth, signIn } from '$lib/firebase';
+	import { auth, signIn } from '$lib/client/firebase';
 	import ShortedLink from '$lib/components/ShortenLink/ShortedLink.svelte';
 	import linkGlass from '$lib/assets/linkGlass.png';
 

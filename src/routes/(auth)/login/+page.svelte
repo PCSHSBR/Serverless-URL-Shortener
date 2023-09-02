@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import box_img from '$lib/assets/box.png';
-	import { signIn, auth } from '$lib/firebase';
+	import { signIn, auth } from '$lib/client/firebase';
 	import { userStore, SignedIn } from 'sveltefire';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';

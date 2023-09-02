@@ -2,7 +2,7 @@
 	import Icon from '@iconify/svelte';
 	import { SignedIn, SignedOut } from 'sveltefire';
 	import { slide } from 'svelte/transition';
-	import { signIn } from '$lib/firebase';
+	import { signIn } from '$lib/client/firebase';
 	import { redirect } from '@sveltejs/kit';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';

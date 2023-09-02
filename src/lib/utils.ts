@@ -1,3 +1,5 @@
+import slug from 'slug';
+
 /**
  * Checks if url is valid
  * @param url url to check
@@ -10,4 +12,9 @@ export function isURL(url: string): boolean {
 	} catch (e) {
 		return false;
 	}
+}
+
+export function getSlugFromURL(url: string): string {
+	const parsed = new URL(url);
+	return `${slug(parsed.hostname)}-${slug(parsed.pathname.slice(1))}`
 }

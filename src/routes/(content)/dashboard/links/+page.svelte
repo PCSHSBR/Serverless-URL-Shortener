@@ -2,13 +2,15 @@
 	import Icon from '@iconify/svelte';
 	import { fade, slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
-	import { Collection, SignedIn, SignedOut, userStore } from 'sveltefire';
-	import { auth, signIn } from '$lib/firebase';
+	import { Collection, SignedIn, SignedOut, collectionStore, userStore } from 'sveltefire';
+	import { auth, signIn } from '$lib/client/firebase';
 	import { goto } from '$app/navigation';
 	import ShortedLink from '$lib/components/ShortenLink/ShortedLink.svelte';
 	import QrCanvas from '$lib/components/QrCanvas.svelte';
 	import CreateShortenedLink from '$lib/components/CreateShortenedLink.svelte';
+	import { app } from '$lib/client/firebase';
 	const user = userStore(auth);
+	const links = collectionStore(app, 'links');
 
 	onMount(async () => {
 		if (!$user) {
@@ -51,12 +53,9 @@
 			</div>
 		</div>
 		<div class="bg-base-200 p-4 space-y-4 rounded-xl divide-y-2 divide-base-100">
-			<ShortedLink link="https://youtu.be/Yk8jV7r6VMk" />
-			<ShortedLink link="https://youtu.be/gOgpdp3lP8M" />
-			<ShortedLink link="https://youtu.be/gOgpdp3lP8M" />
-			<ShortedLink />
-			<ShortedLink />
-			<ShortedLink />
+			{#each $links as link}
+				<ShortedLink link={link.shortLink} originalLink={link.longLink} />
+			{/each}
 		</div>
 	</SignedIn>
 </section>

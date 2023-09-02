@@ -4,6 +4,7 @@
 	import ShowLinkField from './ShowLinkField.svelte';
 	import { twMerge } from 'tailwind-merge';
 	import { dev } from '$app/environment';
+	import slug from 'slug';
 	export let link: string = 'https://phu.best/qqq';
 	export { clazz as class };
 	export let views: number = 512;
@@ -18,8 +19,9 @@
 		const a = document.createElement('a');
 		if (!imageqr) return dev && console.error('imageqr is null');
 		a.href = imageqr.src;
-		a.download = 'qr.png';
+		a.download = slug(originalLink) + '.png';
 		a.click();
+		a.remove();
 	}
 	async function copyQRImageToClipboars() {
 		if (!imageqr) return dev && console.error('imageqr is null');

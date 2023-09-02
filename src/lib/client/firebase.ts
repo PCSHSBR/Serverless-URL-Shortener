@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { doc, getFirestore, setDoc } from 'firebase/firestore';
 import { type Auth, GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import { getStorage } from 'firebase/storage';
 
@@ -24,7 +24,14 @@ export function isSignedIn(auth: Auth) {
 
 export async function signIn(auth: Auth) {
 	const provider = new GoogleAuthProvider();
-	await signInWithPopup(auth, provider);
+	await signInWithPopup(auth, provider).then(async (result) => { 
+		await setDoc(doc(db, 'users', result.user.uid), {
+			name: result.user.displayName,
+			email: result.user.email,
+			photoURL: result.user.photoURL,
+			uid: result.user.uid
+		})
+	})
 }
 
 export async function signOut(auth: Auth) {
