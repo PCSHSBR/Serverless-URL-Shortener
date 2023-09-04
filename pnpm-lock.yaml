@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -38,9 +38,6 @@ dependencies:
   typescript:
     specifier: ^5.2.2
     version: 5.2.2
-  zod:
-    specifier: ^3.22.2
-    version: 3.22.2
 
 devDependencies:
   '@iconify/svelte':
@@ -3586,6 +3583,7 @@ packages:
       y18n: 5.0.8
       yargs-parser: 21.1.1
     dev: false
+<<<<<<< HEAD
 
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
@@ -3596,3 +3594,5 @@ packages:
   /zod@3.22.2:
     resolution: {integrity: sha512-wvWkphh5WQsJbVk1tbx1l1Ly4yg+XecD+Mq280uBGt9wa5BKSWf4Mhp6GmrkPixhMxmabYY7RbzlwVP32pbGCg==}
     dev: false
+=======
+>>>>>>> main
