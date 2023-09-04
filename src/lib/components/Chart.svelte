@@ -1,6 +1,5 @@
 <script lang="ts">
 	export { clazz as class };
-	import Chart from 'chart.js/auto';
 	import { onMount } from 'svelte';
 	import { twMerge } from 'tailwind-merge';
 	let clazz = '';
