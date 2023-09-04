@@ -6,7 +6,6 @@
 	import { auth, signIn } from '$lib/client/firebase';
 	import { goto } from '$app/navigation';
 	import Chart from '$lib/components/Chart.svelte';
-	import ShortedLink from '$lib/components/ShortenLink/ShortedLink.svelte';
 </script>
 
 <svelte:head>
@@ -31,7 +30,7 @@
 					<div class="inline-flex items-end">
 						<span class="text-3xl font-bold">2.5 พัน</span><span class="pl-2 inline-flex"
 							><Icon class="pr-2 text-2xl" icon="material-symbols:arrow-outward" />10%
-							จากอาทิทย์ที่แล้ว</span
+							จากอาทิตย์ที่แล้ว</span
 						>
 					</div>
 					<Chart />
