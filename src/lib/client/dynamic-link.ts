@@ -142,7 +142,7 @@ async function sendRequest(method: 'POST', body: DynamicLinkParameters) {
   throw new Error('เกิดข้อผิดพลาดขณะสร้างลิงก์')
 }
 
-interface Link {
+export interface Link {
   domain: string;
   longLink: string;
   shortLink: string;

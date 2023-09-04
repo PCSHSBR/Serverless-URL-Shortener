@@ -63,11 +63,4 @@
 			<div class="collapse-content text-xs">รายการขั้นสูง</div>
 		</div> -->
 	{/if}
-	{#if successShortLink}
-		<div class="alert alert-success">
-			<span>
-				{successShortLink}
-			</span>
-		</div>
-	{/if}
 </div>

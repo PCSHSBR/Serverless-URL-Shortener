@@ -8,9 +8,18 @@
 	import ShortedLink from '$lib/components/ShortenLink/ShortedLink.svelte';
 	import QrCanvas from '$lib/components/QrCanvas.svelte';
 	import CreateShortenedLink from '$lib/components/CreateShortenedLink.svelte';
-	import { app } from '$lib/client/firebase';
+	import { app, db } from '$lib/client/firebase';
+	import { Query, collection, orderBy, query, where } from 'firebase/firestore';
+	import type { Link } from '$lib/client/dynamic-link';
+
 	const user = userStore(auth);
-	const links = collectionStore(app, 'links');
+	const linksRef = collection(db, 'links');
+	$: q = query(
+		linksRef,
+		where('createBy', '==', $user?.uid || ''),
+		orderBy('createAt', 'desc')
+	) as Query<Link>;
+	$: links = collectionStore<Link>(db, q);
 
 	onMount(async () => {
 		if (!$user) {
@@ -30,7 +39,7 @@
 		</h1>
 		<CreateShortenedLink showAdvance />
 
-		<div class="form-control gap-2 bg-base-200 p-4 mb-4 rounded-xl">
+		<!-- <div class="form-control gap-2 bg-base-200 p-4 mb-4 rounded-xl">
 			<div class="input-group shadow-md">
 				<input type="text" placeholder="ค้นหา" class="w-full input input-bordered" />
 				<button class="btn btn-square">
@@ -40,7 +49,7 @@
 					<Icon icon="mdi:filter" />
 				</button>
 			</div>
-			<div class=" input-group w-auto md:mx-0 mx-auto">
+			<div class="input-group w-auto md:mx-0 mx-auto">
 				<button class="btn bg-base-100"> 1 </button>
 				<button class="btn bg-base-100">
 					<Icon icon="mdi:arrow-left" />
@@ -51,7 +60,7 @@
 				</button>
 				<button class="btn bg-base-100"> 40 </button>
 			</div>
-		</div>
+		</div> -->
 		<div class="bg-base-200 p-4 space-y-4 rounded-xl divide-y-2 divide-base-100">
 			{#each $links as link}
 				<ShortedLink link={link.shortLink} originalLink={link.longLink} />

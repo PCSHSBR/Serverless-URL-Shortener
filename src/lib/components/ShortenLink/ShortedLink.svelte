@@ -5,12 +5,14 @@
 	import { twMerge } from 'tailwind-merge';
 	import { dev } from '$app/environment';
 	import slug from 'slug';
+	import { fly } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 	export let link: string = 'https://phu.best/qqq';
 	export { clazz as class };
-	export let views: number = 512;
-	export let statisticsLink: string = '/dashboard/links/statistics/qqq';
-	export let editLink: string = '/dashboard/links/edit/qqq';
-	export let deleteLink: string = '/dashboard/links/delete/qqq?confirm=1';
+	// export let views: number = 512;
+	// export let statisticsLink: string = '/dashboard/links/statistics/qqq';
+	// export let editLink: string = '/dashboard/links/edit/qqq';
+	// export let deleteLink: string = '/dashboard/links/delete/qqq?confirm=1';
 	export let originalLink: string = 'https://www.youtube.com/watch?v=zZdVwTjUtjg';
 	let imageqr: HTMLImageElement | null = null;
 	let clazz = '';
@@ -41,25 +43,36 @@
 </script>
 
 <div
+	transition:fly={{ duration: 300, easing: quintOut }}
 	class={twMerge('flex gap-4 md:flex-row flex-col md:justify-between justify-normal p-4', clazz)}
 >
-	<div class="flex md:flex-row flex-col items-center gap-4">
+	<div class="flex md:flex-row flex-col items-enter gap-4 w-full">
 		<QrCanvas bind:imageele={imageqr} content={link} class="w-28 h-28" />
 		<div class="flex flex-col w-full">
 			<ShowLinkField title="ลิงก์ย่อ" {link} />
 			<ShowLinkField title="ปลายทาง" link={originalLink} />
 		</div>
 	</div>
-	<div class="text-sm flex flex-wrap md:justify-start justify-center gap-2">
-		<button class="btn btn-sm btn-primary"><Icon icon="mdi:eye" />ดูสถิติ</button>
+	<div class="text-md md:text-sm flex md:justify-start gap-2 flex-col md:w-56">
+		<!-- <button class="btn btn-sm btn-primary"
+			><Icon icon="mdi:eye" />
+			<span class="hidden md:inline"> ดูสถิติ </span>
+		</button> -->
 		<button class="btn btn-sm btn-primary" on:click={copyQRImageToClipboars}
-			><Icon icon="mdi:content-copy" />คัดลอกภาพ</button
-		>
+			><Icon icon="mdi:content-copy" />
+			<span class="hidden md:inline"> คัดลอกภาพ </span>
+		</button>
 		<button class="btn btn-sm btn-primary" on:click={DownloadQRImage}
-			><Icon icon="mdi:download" />ดาวโหลดภาพ</button
-		>
-		<button class="btn btn-sm btn-primary"><Icon icon="mdi:edit" />แก้ไข</button>
-		<button class="btn btn-sm btn-primary"><Icon icon="mdi:delete" /> ลบ</button>
+			><Icon icon="mdi:download" />
+			<span class="hidden md:inline"> ดาวโหลดภาพ </span>
+		</button>
+		<!-- <button class="btn btn-sm btn-primary"
+			><Icon icon="mdi:edit" /><span class="hidden md:inline"> แก้ไข </span>
+		</button> -->
+		<!-- <button class="btn btn-sm btn-primary"
+			><Icon icon="mdi:delete" />
+			<span class="hidden md:inline"> ลบ </span>
+		</button> -->
 	</div>
 </div>
 
