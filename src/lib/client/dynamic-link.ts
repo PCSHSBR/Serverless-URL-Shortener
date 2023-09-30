@@ -102,31 +102,31 @@ export async function createLink(options: CreateLinkSchema) {
     unguessable = false,
   } = result.data;
   if (!userAuth) throw new Error('กรุณาเข้าสู่ระบบก่อนสร้างลิงก์');
-  try {
-    const { shortLink } = await sendRequest('POST', {
-      dynamicLinkInfo: {
-        domainUriPrefix: `https://${domain}`,
-        link,
-        ...(customSlug ? { navigationInfo: { enableForcedRedirect: true } } : {}),
-      },
-      suffix: {
-        option: unguessable ? 'UNGUESSABLE' : 'SHORT'
-      }
-    })
-    const docRef = await setDoc(doc(db, `links/${getSlugFromURL(shortLink)}`), {
-      domain,
-      longLink: link,
-      shortLink,
-      createAt: serverTimestamp(),
-      createBy: userAuth.currentUser?.uid
-    })
-    return { success: true, shortLink, docRef }
-  } catch (error) {
-    console.log(error)
+  const response = await sendRequest('POST', {
+    dynamicLinkInfo: {
+      domainUriPrefix: `https://${domain}`,
+      link,
+      ...(customSlug ? { navigationInfo: { enableForcedRedirect: true } } : {}),
+    },
+    suffix: {
+      option: unguessable ? 'UNGUESSABLE' : 'SHORT'
+    }
+  })
+  if ('error' in response) {
+    return { success: false, error: response.error }
   }
+  const { shortLink } = response;
+  const docRef = await setDoc(doc(db, `links/${getSlugFromURL(shortLink)}`), {
+    domain,
+    longLink: link,
+    shortLink,
+    createAt: serverTimestamp(),
+    createBy: userAuth.currentUser?.uid
+  })
+  return { success: true, shortLink, docRef, longLink: link };
 }
 
-async function sendRequest(method: 'POST', body: DynamicLinkParameters) {
+async function sendRequest(method: 'POST', body: DynamicLinkParameters): Promise<GetLinkResult> {
   const url = `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${PUBLIC_DENGEROUS_FIREBASE_WEB_API_KEY}`
   const response = await fetch(url, {
     body: JSON.stringify(body),
@@ -136,10 +136,9 @@ async function sendRequest(method: 'POST', body: DynamicLinkParameters) {
     }
   })
   if (response.ok) {
-    return response.json() as Promise<{ shortLink: string; previewLink: string }>
+    return response.json() as Promise<GetLinkResult>
   }
-  console.error(response.status, response.statusText)
-  throw new Error('เกิดข้อผิดพลาดขณะสร้างลิงก์')
+  return response.json() as Promise<ErrorResponse>
 }
 
 export interface Link {
@@ -149,3 +148,18 @@ export interface Link {
   createAt: Date;
   createBy: string;
 }
+
+interface ErrorResponse {
+  error: {
+    message: string;
+    code: number;
+    status: string;
+  };
+}
+
+interface GetLinkResponse {
+  shortLink: string;
+  previewLink: string;
+}
+
+type GetLinkResult = GetLinkResponse | ErrorResponse;

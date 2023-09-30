@@ -47,7 +47,7 @@
 	class={twMerge('flex gap-4 md:flex-row flex-col md:justify-between justify-normal p-4', clazz)}
 >
 	<div class="flex md:flex-row flex-col items-enter gap-4 w-full">
-		<QrCanvas bind:imageele={imageqr} content={link} class="w-28 h-28" />
+		<QrCanvas bind:imageele={imageqr} content={link} size={512} class="w-28 h-28" />
 		<div class="flex flex-col w-full">
 			<ShowLinkField title="ลิงก์ย่อ" {link} />
 			<ShowLinkField title="ปลายทาง" link={originalLink} />
@@ -60,11 +60,11 @@
 		</button> -->
 		<button class="btn btn-sm btn-primary" on:click={copyQRImageToClipboars}
 			><Icon icon="mdi:content-copy" />
-			<span class="hidden md:inline"> คัดลอกภาพ </span>
+			<span> คัดลอกภาพ </span>
 		</button>
 		<button class="btn btn-sm btn-primary" on:click={DownloadQRImage}
 			><Icon icon="mdi:download" />
-			<span class="hidden md:inline"> ดาวโหลดภาพ </span>
+			<span> ดาวโหลดภาพ </span>
 		</button>
 		<!-- <button class="btn btn-sm btn-primary"
 			><Icon icon="mdi:edit" /><span class="hidden md:inline"> แก้ไข </span>

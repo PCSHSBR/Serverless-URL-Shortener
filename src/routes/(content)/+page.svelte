@@ -29,7 +29,7 @@
 				placeholder="ลิงก์"
 			/>
 		</div>
-		<ShortedLink class="bg-base-200 p-4 rounded-2xl"/>
+		<ShortedLink class="bg-base-200 p-4 rounded-2xl" />
 	</SignedIn>
 	<div
 		class="carousel carousel-center w-full px-1 py-4 space-x-4 bg-neutral rounded-box md:justify-center justify-start"
@@ -77,3 +77,38 @@
 		</SignedOut>
 	</div>
 </section>
+
+<style lang="scss">
+	.url-container {
+		@apply relative rounded-2xl transition-all duration-100;
+
+		&:focus-within {
+			@apply shadow-lg;
+
+			&::after {
+				@apply blur-sm;
+			}
+		}
+
+		&::after {
+			transition: all ease 0.5s transition-all duration-100;
+			position: absolute;
+			top: -2px;
+			bottom: -2px;
+			left: -2px;
+			right: -2px;
+			background: linear-gradient(
+				90deg,
+				hsl(var(--p)),
+				transparent,
+				transparent,
+				transparent,
+				transparent,
+				hsl(var(--p))
+			);
+			content: '';
+			z-index: -1;
+			border-radius: 1rem;
+		}
+	}
+</style>
