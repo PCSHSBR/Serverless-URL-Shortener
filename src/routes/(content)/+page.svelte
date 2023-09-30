@@ -1,10 +1,14 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import { fade } from 'svelte/transition';
-	import { SignedIn, SignedOut, userStore } from 'sveltefire';
-	import { auth, signIn } from '$lib/client/firebase';
+	import { SignedIn, SignedOut, collectionStore, userStore } from 'sveltefire';
+	import { auth, db, signIn } from '$lib/client/firebase';
 	import ShortedLink from '$lib/components/ShortenLink/ShortedLink.svelte';
 	import linkGlass from '$lib/assets/linkGlass.png';
+	import CreateShortenedLink from '$lib/components/CreateShortenedLink.svelte';
+	import CreateAndShowHistory from '$lib/components/CreateAndShowHistory.svelte';
+	import { collection, query } from 'firebase/firestore';
+	import type { Link } from '$lib/client/dynamic-link';
 
 	const user = userStore(auth);
 </script>
@@ -21,15 +25,7 @@
 		ทำให้ URL <span class="font-extrabold text-primary"> สั้นกว่าเดิม </span> ได้เลยตอนนี้
 	</h1>
 	<SignedIn>
-		<div class="url-container cursor-pointe bg-base-200 p-2 my-4 flex" in:fade out:fade>
-			<button class="btn btn-primary" on:click|preventDefault={() => {}}>ทำให้สั้น</button>
-			<input
-				type="text"
-				class="w-full bg-transparent mx-4 border-none outline-none"
-				placeholder="ลิงก์"
-			/>
-		</div>
-		<ShortedLink class="bg-base-200 p-4 rounded-2xl" />
+		<CreateAndShowHistory />
 	</SignedIn>
 	<div
 		class="carousel carousel-center w-full px-1 py-4 space-x-4 bg-neutral rounded-box md:justify-center justify-start"

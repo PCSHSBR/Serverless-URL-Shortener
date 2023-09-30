@@ -11,6 +11,7 @@
 	import { app, db } from '$lib/client/firebase';
 	import { Query, collection, orderBy, query, where } from 'firebase/firestore';
 	import type { Link } from '$lib/client/dynamic-link';
+	import CreateAndShowHistory from '$lib/components/CreateAndShowHistory.svelte';
 
 	const user = userStore(auth);
 	const linksRef = collection(db, 'links');
@@ -37,55 +38,6 @@
 		<h1 class="text-6xl leading-snug">
 			<span class="font-extrabold text-primary">ลิงก์</span>ทั้งหมด
 		</h1>
-		<CreateShortenedLink showAdvance />
-
-		<!-- <div class="form-control gap-2 bg-base-200 p-4 mb-4 rounded-xl">
-			<div class="input-group shadow-md">
-				<input type="text" placeholder="ค้นหา" class="w-full input input-bordered" />
-				<button class="btn btn-square">
-					<Icon icon="mdi:magnify" />
-				</button>
-				<button class="btn btn-square">
-					<Icon icon="mdi:filter" />
-				</button>
-			</div>
-			<div class="input-group w-auto md:mx-0 mx-auto">
-				<button class="btn bg-base-100"> 1 </button>
-				<button class="btn bg-base-100">
-					<Icon icon="mdi:arrow-left" />
-				</button>
-				<button class="btn bg-base-100"> 1/40 </button>
-				<button class="btn bg-base-100">
-					<Icon icon="mdi:arrow-right" />
-				</button>
-				<button class="btn bg-base-100"> 40 </button>
-			</div>
-		</div> -->
-		<div class="bg-base-200 p-4 space-y-4 rounded-xl divide-y-2 divide-base-100">
-			{#each $links as link}
-				<ShortedLink link={link.shortLink} originalLink={link.longLink} />
-			{:else}
-				<div class="text-center text-xl text-base-content">
-					<svg
-						class="w-16 h-16 mx-auto my-4 fill-current text-base-content"
-						xmlns="http://www.w3.org/2000/svg"
-						xmlns:xlink="http://www.w3.org/1999/xlink"
-						version="1.1"
-						id="Layer_1"
-						x="0px"
-						y="0px"
-						viewBox="0 0 32 32"
-						style="enable-background:new 0 0 32 32;"
-						xml:space="preserve"
-					>
-						<path
-							style="stroke-dasharray: 1000"
-							d="M16,31.36C7.53,31.36,0.64,24.47,0.64,16  S7.53,0.64,16,0.64S31.36,7.53,31.36,16S24.47,31.36,16,31.36z M16,1.36C7.927,1.36,1.36,7.927,1.36,16  c0,8.072,6.567,14.64,14.64,14.64c8.072,0,14.64-6.567,14.64-14.64S24.072,1.36,16,1.36z M14,29.36c-2.404,0-4.36-1.956-4.36-4.36  c0-0.741,0.189-1.475,0.548-2.118l1.511-2.72C9.928,19.607,8.64,17.951,8.64,16c0-0.741,0.189-1.474,0.548-2.118l5-9  C14.958,3.499,16.419,2.64,18,2.64c2.404,0,4.36,1.956,4.36,4.36c0,0.741-0.19,1.473-0.549,2.118l-1.511,2.72  c1.771,0.555,3.06,2.21,3.06,4.162c0,0.741-0.189,1.473-0.549,2.117l-5,9C17.042,28.501,15.582,29.36,14,29.36z M12.433,20.323  l-1.615,2.908c-0.3,0.538-0.458,1.149-0.458,1.769c0,2.007,1.633,3.64,3.64,3.64c1.321,0,2.54-0.717,3.183-1.872l5-9l0,0  C22.482,17.23,22.64,16.619,22.64,16c0-1.682-1.146-3.101-2.698-3.517l-3.129,5.634c-0.77,1.384-2.231,2.243-3.812,2.243  C12.808,20.36,12.619,20.348,12.433,20.323z M12.815,19.636c1.367,0.065,2.694-0.658,3.368-1.868l3.001-5.403  c-1.389-0.085-2.695,0.658-3.367,1.867L12.815,19.636z M18,3.36c-1.32,0-2.54,0.717-3.183,1.872l-5,9  C9.518,14.77,9.36,15.381,9.36,16c0,1.682,1.146,3.101,2.698,3.517l3.13-5.635c0.771-1.383,2.231-2.242,3.812-2.242  c0.192,0,0.381,0.012,0.566,0.037l1.616-2.909l0,0C21.481,8.23,21.64,7.619,21.64,7C21.64,4.993,20.007,3.36,18,3.36z"
-						/>
-					</svg>
-					<span> คุณยังไม่ได้สร้างลิงก์อะไรเลย </span>
-				</div>
-			{/each}
-		</div>
+		<CreateAndShowHistory />
 	</SignedIn>
 </section>

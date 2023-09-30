@@ -2,10 +2,15 @@
 	import Icon from '@iconify/svelte';
 	import { fade, slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
-	import { Collection, SignedIn, SignedOut, userStore } from 'sveltefire';
-	import { auth, signIn } from '$lib/client/firebase';
+	import { Collection, SignedIn, SignedOut, collectionStore, userStore } from 'sveltefire';
+	import { auth, db, signIn } from '$lib/client/firebase';
 	import { goto } from '$app/navigation';
 	import Chart from '$lib/components/Chart.svelte';
+	import { collection } from 'firebase/firestore';
+
+	const user = userStore(auth);
+	const linksRef = collection(db, 'links');
+	$: links = collectionStore(db, linksRef);
 </script>
 
 <svelte:head>
@@ -25,7 +30,7 @@
 				><button class="btn btn-primary"><Icon icon="mdi:account" />จัดการบัญชี</button></a
 			>
 			<div class="grid md:grid-cols-2 grid-cols-1 gap-4">
-				<div class=" bg-base-200 w-full p-5 rounded-xl">
+				<!-- <div class=" bg-base-200 w-full p-5 rounded-xl">
 					<h2 class="text-xl">ยอดการดู</h2>
 					<div class="inline-flex items-end">
 						<span class="text-3xl font-bold">2.5 พัน</span><span class="pl-2 inline-flex"
@@ -34,11 +39,17 @@
 						>
 					</div>
 					<Chart />
-				</div>
+				</div> -->
 				<div class=" bg-base-200 w-full p-5 rounded-xl">
 					<h2 class="text-xl">ลิงก์ทั้งหมด</h2>
 					<div class="inline-flex items-end">
-						<span class="text-3xl font-bold">480</span>
+						<span class="text-3xl font-bold">
+							{#if $links}
+								{$links.length}
+							{:else}
+								0
+							{/if}
+						</span>
 					</div>
 					<Chart />
 				</div>
