@@ -7,10 +7,8 @@
 <svelte:head>
 	<title>แดชบอร์ด/ผู้ดูแลระบบ - PCSHSBR Short</title>
 </svelte:head>
-
-<h1>Coming Soon</h1>
-<!-- <section class="md:px-8 px-4 m-auto mx-auto mt-8">
-	<h1 class="text-6xl leading-snug">
+<section class="md:px-8 px-4 m-auto mx-auto mt-8">
+	<!-- <h1 class="text-6xl leading-snug">
 		หน้าต่าง<span class="font-extrabold text-primary">ผู้ดูแลระบบ</span>
 	</h1>
 	<div class="my-4 grid md:grid-cols-2 grid-cols-1 gap-4">
@@ -59,5 +57,6 @@
 	</div>
 	<div>
 		<small>version : 0.0.1</small>
-	</div>
-</section> -->
+	</div> -->
+	<p>Coming soon</p>
+</section>

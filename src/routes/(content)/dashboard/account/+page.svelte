@@ -21,14 +21,17 @@
 
 <section class="md:px-8 px-4 m-auto mx-auto mt-8">
 	<h1 class="text-6xl leading-snug">
-		จัดการ<span class="font-extrabold text-primary">บัญชี</span>
+		Manage <span class="font-extrabold text-primary">account</span>
 	</h1>
 	<div>
 		<SignedIn let:auth>
-			<p class="whitespace-pre-line">
-				ยินดีต้อนรับ <b>{auth.currentUser?.displayName}</b>
-				อีเมล: <b>{auth.currentUser?.email}</b>
-			</p>
+			<div class="flex items-center gap-4 my-4">
+				<img src="{$user?.photoURL}" class="w-16 rounded-3xl border-4" alt="">
+				<p class="whitespace-pre-line">
+					Welcome! <b>{auth.currentUser?.displayName}</b>
+					Email: <b>{auth.currentUser?.email}</b>
+				</p>
+			</div>
 			<button
 				class="btn btn-sm btn-error"
 				on:click={async () => {
@@ -36,7 +39,7 @@
 					if (!$user) {
 						goto('/');
 					}
-				}}><Icon icon="mdi:logout" />ออกจากระบบ</button
+				}}><Icon icon="mdi:logout" />Sign Out</button
 			>
 		</SignedIn>
 		<SignedOut let:auth>

@@ -23,11 +23,11 @@
 	async function onSubmitNewLink() {
 		linkCreateError = [];
 		if (link.length === 0) {
-			linkCreateError.push('กรุณากรอกลิงก์');
+			linkCreateError.push('Please provide your long link');
 			return;
 		}
 		if (userInput.linkOption == 'custom' && userInput.customLink == '') {
-			linkCreateError.push('กรุณากรอกลิงก์ที่ต้องการ');
+			linkCreateError.push('Please provide your custom slug');
 			return;
 		}
 		const result = await createLink({
@@ -41,7 +41,7 @@
 			if (result?.error?.issues?.lenght > 0) {
 				linkCreateError.push(...result?.error.issues.map((issue) => issue.message));
 			} else {
-				linkCreateError.push(result?.error?.message || 'เกิดข้อผิดพลาดในการสร้างลิงก์');
+				linkCreateError.push(result?.error?.message || 'There was an error creating the link.');
 			}
 			linkCreateError = linkCreateError.filter((v, i, a) => a.indexOf(v) === i);
 			return;
@@ -58,12 +58,12 @@
 	<div class="">
 		<div class="url-container cursor-pointer p-[0.01rem]" transition:fade|local={{ duration: 300 }}>
 			<div class="flex bg-base-200 p-2 rounded-2xl">
-				<button class="btn btn-primary" on:click|preventDefault={onSubmitNewLink}>ทำให้สั้น</button>
+				<button class="btn btn-primary" on:click|preventDefault={onSubmitNewLink}>Shorten</button>
 				<input
 					type="text"
 					bind:value={link}
 					class="w-full bg-transparent mx-4 border-none outline-none"
-					placeholder="ลิงก์"
+					placeholder="Link"
 					on:focus|preventDefault={() => {
 						showAdvance = true;
 					}}
@@ -92,16 +92,16 @@
 				"
 				>
 					<div class="p-4 mt-3">
-						<h3>ตัวเลือกลิงก์</h3>
+						<h3>Link options</h3>
 						<div class="form-control space-y-2 my-2">
 							<CreateOptionTile type="normal" bind:userInput>
-								<h3>ปกติ</h3>
-								<p class="label-text">สร้างลิงก์ตามค่าปริยาย</p>
+								<h3>Normal</h3>
+								<p class="label-text">Create links by default.</p>
 							</CreateOptionTile>
 							<CreateOptionTile type="unguessable" bind:userInput>
-								<h3>สร้างลิงก์ให้ไม่สามารถคาดเดาได้</h3>
+								<h3>Make links unpredictable</h3>
 								<p class="label-text">
-									เลือกตัวเลือกนี้หากไม่ต้องการให้ลิงก์ถูกเข้าถึงโดยการเรียงลำดับ
+									Select this option if you do not want links to be accessed by sorting.
 								</p>
 							</CreateOptionTile>
 							<!-- <CreateOptionTile type="custom" bind:userInput>
@@ -110,10 +110,10 @@
 							</CreateOptionTile> -->
 						</div>
 						{#if userInput.linkOption == 'custom'}
-							<h3>ปรับแต่งลิงก์เอง</h3>
+							<h3>Customize your link</h3>
 							<div class="form-control">
 								<label class="label" for="custom_link">
-									<span class="label-text">สร้างลิงก์โดยใช้ข้อความที่คุณต้องการ</span>
+									<span class="label-text">Create a link using the text you want.</span>
 								</label>
 								<div
 									class="join join-horizontal overflow-x-auto overflow-y-hidden py-2"
@@ -148,9 +148,9 @@
 								</div>
 								<span class="label">
 									<span class="label-text-alt"
-										>หมายเหตุ: ลิงก์ที่กำหนดเองจะสามารถใช้ได้เฉพาะตัวอักษร a-z, A-Z, 0-9,
-										เครื่องหมายขีดลบ (<code>-</code>), และอันเดอร์สกอร์ (<code>_</code>) เท่านั้น
-										และยาวไม่เกิน 32 ตัวอักษร และไม่น้อยกว่า 3 ตัวอักษร ห้ามมีคำหยาบหรือไม่เหมาะสม</span
+										>Note: Custom links can only use the letters a-z, A-Z, 0-9,
+										minus sign (<code>-</code>), and underscore (<code>_</code>) only
+										and must not exceed 32 characters and not less than 3 characters. Do not contain vulgar or inappropriate words.</span
 									>
 								</span>
 							</div>
@@ -165,7 +165,7 @@
 			>
 				{#if successShortLinkResult}
 					<h3 class="text-2xl mt-3 ml-3 font-bold">
-						<span class="text-bold text-primary">สร้างลิงก์</span>เรียบร้อย 🎉
+						<span class="text-bold text-primary">Link created</span>Done 🎉
 					</h3>
 					<ShortedLink
 						link={successShortLinkResult.shortLink}

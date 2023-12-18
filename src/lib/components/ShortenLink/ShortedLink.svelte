@@ -49,8 +49,8 @@
 	<div class="flex md:flex-row flex-col items-enter gap-4 w-full">
 		<QrCanvas bind:imageele={imageqr} content={link} size={512} class="w-28 h-28" />
 		<div class="flex flex-col w-full">
-			<ShowLinkField title="ลิงก์ย่อ" {link} />
-			<ShowLinkField title="ปลายทาง" link={originalLink} />
+			<ShowLinkField title="Shortened Link" {link} />
+			<ShowLinkField title="Destination Link" link={originalLink} />
 		</div>
 	</div>
 	<div class="text-md md:text-sm flex md:justify-start gap-2 flex-col md:w-56">
@@ -60,11 +60,11 @@
 		</button> -->
 		<button class="btn btn-sm btn-primary" on:click={copyQRImageToClipboars}
 			><Icon icon="mdi:content-copy" />
-			<span> คัดลอกภาพ </span>
+			<span> Copy Image </span>
 		</button>
 		<button class="btn btn-sm btn-primary" on:click={DownloadQRImage}
 			><Icon icon="mdi:download" />
-			<span> ดาวโหลดภาพ </span>
+			<span> Save QR Code </span>
 		</button>
 		<!-- <button class="btn btn-sm btn-primary"
 			><Icon icon="mdi:edit" /><span class="hidden md:inline"> แก้ไข </span>

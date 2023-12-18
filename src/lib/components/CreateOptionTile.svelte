@@ -32,7 +32,7 @@
 	<div class="">
 		<slot />
 		<p class="label-text text-base-content/50">
-			ตัวอย่าง: {examplePreview[type] || examplePreview['normal']}
+			Example: {examplePreview[type] || examplePreview['normal']}
 		</p>
 	</div>
 </label>

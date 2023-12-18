@@ -30,13 +30,13 @@
 </script>
 
 <svelte:head>
-	<title>ลิงก์ทั้งหมด - แดชบอร์ด - PCSHSBR Short</title>
+	<title>All links - Dashboard - PCSHSBR Short</title>
 </svelte:head>
 
 <section class="md:px-8 px-4 m-auto mx-auto mt-8">
 	<SignedIn>
 		<h1 class="text-6xl leading-snug">
-			<span class="font-extrabold text-primary">ลิงก์</span>ทั้งหมด
+			<span class="font-extrabold text-primary">All</span> links
 		</h1>
 		<CreateAndShowHistory />
 	</SignedIn>

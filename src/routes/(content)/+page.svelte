@@ -22,7 +22,7 @@
 		<span class="flex w-[128px] h-[128px]">
 			<img src={linkGlass} class="object-cover w-full h-full" alt="" />
 		</span>
-		ทำให้ URL <span class="font-extrabold text-primary"> สั้นกว่าเดิม </span> ได้เลยตอนนี้
+		Make the URL <span class="font-extrabold text-primary"> shorter than before </span> now.
 	</h1>
 	<SignedIn>
 		<CreateAndShowHistory />
@@ -34,28 +34,28 @@
 			class="carousel-item feature-container-card sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start h-64 rounded-2xl"
 		>
 			<Icon icon="mdi:fast-forward" class="text-6xl" />
-			<h2 class="text-2xl">เร็วมาก</h2>
+			<h2 class="text-2xl">Fast</h2>
 			<p>
-				pcshs-short ทำให้การเข้าใช้งานเว็ปต่างๆเร็วขึ้นอย่างเห็นได้ชัดด้วยการทำให้คุณเข้าใช้งาน Link
-				ที่สั้นลง
+				pcshs-short Makes the use of various websites significantly faster by allowing you to access links.
+				shortened
 			</p>
 		</div>
 		<div
 			class="carousel-item feature-container-card sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start h-64 rounded-2xl"
 		>
 			<Icon icon="mdi:link" class="text-6xl" />
-			<h2 class="text-2xl">สั้นกว่าเดิม</h2>
-			<p>psh-short ทำให้ Link นั้นสั้นกว่าเดิมไม่ว่า Link ที่คุณให้มานั้นจะยาวเพียงไหนก็ตาม</p>
+			<h2 class="text-2xl">More short!</h2>
+			<p>psh-short Make the link shorter, no matter how long the link is.</p>
 		</div>
 		<div
 			class="carousel-item feature-container-card relative sm:w-52 w-[calc(100%-28px)] box-content flex p-4 flex-col sm:items-center items-start h-64 rounded-2xl"
 		>
 			<div>
 				<Icon icon="mdi:play" class="text-6xl" />
-				<h2 class="text-2xl font-bold">เริ่มใช้งานเลยตอนนี้</h2>
+				<h2 class="text-2xl font-bold">Get started now</h2>
 				<small>
-					พิเศษสำหรับอีเมล <code>@pccbr.ac.th</code> และ
-					<code>@pcshsbr.ac.th</code> เท่านั้น
+					Special for email <code>@pccbr.ac.th</code> and
+<code>@pcshsbr.ac.th</code> only
 				</small>
 			</div>
 			<a href={$user ? '/dashboard' : 'login'}

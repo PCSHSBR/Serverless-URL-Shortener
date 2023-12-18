@@ -32,10 +32,10 @@
 	>
 		<ul class="mt-16 menu menu-vertical w-full gap-2 px-1">
 			<li>
-				<a href="/" on:click={toggleMenu}><Icon icon="mdi:home" />หน้าแรก</a>
+				<a href="/" on:click={toggleMenu}><Icon icon="mdi:home" />Home</a>
 			</li>
 			<li>
-				<a href="/" on:click={toggleMenu}><Icon icon="mdi:about" />เกี่ยวกับ</a>
+				<a href="/" on:click={toggleMenu}><Icon icon="mdi:about" />About</a>
 			</li>
 		</ul>
 	</div>
@@ -60,18 +60,18 @@
 	</div>
 	<div class="flex-none">
 		<ul class="md:inline-flex hidden menu menu-horizontal px-1">
-			<li><a href="/"><Icon icon="mdi:home" />หน้าแรก</a></li>
-			<li><a href="/"><Icon icon="mdi:about" />เกี่ยวกับ</a></li>
+			<li><a href="/"><Icon icon="mdi:home" />Home</a></li>
+			<li><a href="/"><Icon icon="mdi:about" />About</a></li>
 		</ul>
 		<SignedOut let:auth>
 			<a href="/login"
-				><button class="btn btn-primary"><Icon icon="mdi:login" />เข้าสู่ระบบ</button></a
+				><button class="btn btn-primary"><Icon icon="mdi:login" />Login</button></a
 			>
 		</SignedOut>
 		<SignedIn let:user let:signOut>
 			<a href="/dashboard"
 				><button class="btn btn-primary"
-					><Icon icon="material-symbols:dashboard" on:click={fixMenu} />แดชบอร์ด</button
+					><Icon icon="material-symbols:dashboard" on:click={fixMenu} />Dashboard</button
 				></a
 			>
 		</SignedIn>
