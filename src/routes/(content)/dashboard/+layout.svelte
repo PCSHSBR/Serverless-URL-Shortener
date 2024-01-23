@@ -13,7 +13,7 @@
 	});
 </script>
 
-<nav class="bg-base-200 fixed left-0 top-0 bottom-0 hidden md:flex flex-row mt-[4.25rem] rounded-t">
+<nav class="bg-base-200 fixed left-0 top-0 bottom-0 hidden md:flex flex-col justify-between mt-[4.25rem] rounded-t">
 	<ul class="flex flex-col">
 		<a href="/dashboard"
 			><button
@@ -27,18 +27,20 @@
 				><Icon icon="mdi:link" /></button
 			></a
 		>
-		<a href="/dashboard/account"
-			><button
-				class="btn btn-lg {$page.url.pathname === '/dashboard/account'
-					? 'btn-primary'
-					: 'btn-ghost'}"><Icon icon="mdi:account" /></button
-			></a
-		>
 		<a href="/dashboard/adminpanel"
 			><button
 				class="btn btn-lg {$page.url.pathname === '/dashboard/adminpanel'
 					? 'btn-primary'
 					: 'btn-ghost'}"><Icon icon="ic:round-admin-panel-settings" /></button
+			></a
+		>
+	</ul>
+	<ul>
+		<a href="/dashboard/account"
+			><button
+				class="btn btn-lg {$page.url.pathname === '/dashboard/account'
+					? 'btn-primary'
+					: 'btn-ghost'}"><Icon icon="mdi:account" /></button
 			></a
 		>
 	</ul>
@@ -62,18 +64,18 @@
 					: 'btn-ghost'}"><Icon icon="mdi:link" /></button
 			></a
 		>
-		<a href="/dashboard/account"
-			><button
-				class="btn w-full btn-lg {$page.url.pathname === '/dashboard/account'
-					? 'btn-primary'
-					: 'btn-ghost'}"><Icon icon="mdi:account" /></button
-			></a
-		>
 		<a href="/dashboard/adminpanel"
 			><button
 				class="btn w-full btn-lg {$page.url.pathname === '/dashboard/adminpanel'
 					? 'btn-primary'
 					: 'btn-ghost'}"><Icon icon="ic:round-admin-panel-settings" /></button
+			></a
+		>
+		<a href="/dashboard/account"
+			><button
+				class="btn w-full btn-lg {$page.url.pathname === '/dashboard/account'
+					? 'btn-primary'
+					: 'btn-ghost'}"><Icon icon="mdi:account" /></button
 			></a
 		>
 	</div>
