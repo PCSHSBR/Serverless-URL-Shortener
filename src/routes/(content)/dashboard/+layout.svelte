@@ -13,7 +13,7 @@
 	});
 </script>
 
-<nav class="bg-base-200 fixed left-0 top-0 bottom-0 hidden md:flex flex-row pt-16">
+<nav class="bg-base-200 fixed left-0 top-0 bottom-0 hidden md:flex flex-row mt-[4.25rem] rounded-t">
 	<ul class="flex flex-col">
 		<a href="/dashboard"
 			><button
