@@ -46,7 +46,7 @@
 	transition:fly={{ duration: 300, easing: quintOut }}
 	class={twMerge('flex gap-4 md:flex-row flex-col md:justify-between justify-normal py-4', clazz)}
 >
-	<div class="max-w-full w-full overflow-hidden min-w-0 flex gap-3 flex-col md:flex-row">
+	<div class="max-w-full w-full overflow-hidden min-w-0 flex gap-3 flex-col items-center xxs:flex-row">
 		<QrCanvas bind:imageele={imageqr} content={link} size={512} class="w-28 h-28" />
 		<div class="flex flex-col w-full max-w-full overflow-hidden text-ellipsis">
 			<ShowLinkField title="Shortened Link" {link} />
