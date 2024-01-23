@@ -18,7 +18,10 @@
 		linkOption: 'normal'
 	};
 
-	$: expandAdvance = !!link || userInput.linkOption !== 'normal';
+	let expandAdvance = false;
+	$: {
+		expandAdvance = !!link || userInput.linkOption !== 'normal';
+	}
 
 	async function onSubmitNewLink() {
 		linkCreateError = [];
@@ -56,7 +59,7 @@
 
 <div class="my-4 group">
 	<div class="">
-		<div class="url-container cursor-pointer p-[0.01rem]" transition:fade|local={{ duration: 300 }}>
+		<div class="url-container p-[0.01rem]" transition:fade|local={{ duration: 300 }}>
 			<div class="flex bg-base-200 p-2 rounded-2xl">
 				<button class="btn btn-primary" on:click|preventDefault={onSubmitNewLink}>Shorten</button>
 				<input
@@ -148,9 +151,10 @@
 								</div>
 								<span class="label">
 									<span class="label-text-alt"
-										>Note: Custom links can only use the letters a-z, A-Z, 0-9,
-										minus sign (<code>-</code>), and underscore (<code>_</code>) only
-										and must not exceed 32 characters and not less than 3 characters. Do not contain vulgar or inappropriate words.</span
+										>Note: Custom links can only use the letters a-z, A-Z, 0-9, minus sign (<code
+											>-</code
+										>), and underscore (<code>_</code>) only and must not exceed 32 characters and
+										not less than 3 characters. Do not contain vulgar or inappropriate words.</span
 									>
 								</span>
 							</div>
