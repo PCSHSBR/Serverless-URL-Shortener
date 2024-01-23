@@ -44,19 +44,19 @@
 
 <div
 	transition:fly={{ duration: 300, easing: quintOut }}
-	class={twMerge('flex gap-4 md:flex-row flex-col md:justify-between justify-normal p-4', clazz)}
+	class={twMerge('flex gap-4 md:flex-row flex-col md:justify-between justify-normal py-4', clazz)}
 >
-	<div class="flex md:flex-row flex-col items-enter gap-4 w-full">
+	<div class="max-w-full w-full overflow-hidden min-w-0 flex gap-3 flex-col md:flex-row">
 		<QrCanvas bind:imageele={imageqr} content={link} size={512} class="w-28 h-28" />
-		<div class="flex flex-col w-full">
+		<div class="flex flex-col w-full max-w-full overflow-hidden text-ellipsis">
 			<ShowLinkField title="Shortened Link" {link} />
 			<ShowLinkField title="Destination Link" link={originalLink} />
 		</div>
 	</div>
-	<div class="text-md md:text-sm flex md:justify-start gap-2 flex-col md:w-56">
-		<!-- <button class="btn btn-sm btn-primary"
+	<div class="text-md md:text-sm flex md:justify-start gap-2 flex-col md:w-56 min-w-0">
+		<!-- <button class="btn btn-sm btn-primary" disabled title="Coming soon"
 			><Icon icon="mdi:eye" />
-			<span class="hidden md:inline"> ดูสถิติ </span>
+			<span class="hidden md:inline"> View statistic </span>
 		</button> -->
 		<button class="btn btn-sm btn-primary" on:click={copyQRImageToClipboars}
 			><Icon icon="mdi:content-copy" />
@@ -68,8 +68,8 @@
 		</button>
 		<!-- <button class="btn btn-sm btn-primary"
 			><Icon icon="mdi:edit" /><span class="hidden md:inline"> แก้ไข </span>
-		</button> -->
-		<!-- <button class="btn btn-sm btn-primary"
+		</button>
+		<button class="btn btn-sm btn-primary"
 			><Icon icon="mdi:delete" />
 			<span class="hidden md:inline"> ลบ </span>
 		</button> -->

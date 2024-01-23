@@ -9,18 +9,18 @@
 	}
 </script>
 
-<div class="">
+<div class="max-w-full w-full">
 	<span class="text-sm">{title}</span>
 	<div
-		class="flex justify-between flex-row items-center gap-3 line-clamp-1 join my-1 join-horizontal"
+		class="flex gap-2"
 	>
-		<p class="p-1.5 text-sm bg-base-300 w-full">
-			<a class="link link-hover" href={link}>{link}</a>
+		<p class="p-1.5 w-full max-w-full text-sm bg-base-300 overflow-hidden text-ellipsis flex rounded-md">
+			<a class="link link-hover whitespace-nowrap w-auto max-w-full overflow-hidden text-ellipsis" href={link}>{link}</a>
 		</p>
 		{#if !disabledCopy}
-			<button class="btn btn-sm" on:click|preventDefault={copyLinkToClipboard}
+			<button type="button" title="Click to copy" class="btn btn-sm min-w-0" on:click|preventDefault={copyLinkToClipboard}
 				><Icon icon="mdi:content-copy" class="h-4 w-4" />
-				<span class="sr-only">กดเพื่อคัดลอก</span>
+				<span class="sr-only">Click to copy</span>
 			</button>
 		{/if}
 	</div>
