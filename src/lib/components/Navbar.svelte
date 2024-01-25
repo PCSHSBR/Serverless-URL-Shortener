@@ -2,12 +2,8 @@
 	import Icon from '@iconify/svelte';
 	import { SignedIn, SignedOut } from 'sveltefire';
 	import { slide } from 'svelte/transition';
-	import { signIn } from '$lib/client/firebase';
-	import { redirect } from '@sveltejs/kit';
 	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
 	import Logo from '$lib/assets/ChainIcon.svelte';
-	import { onMount } from 'svelte';
 	import { dev } from '$app/environment';
 
 	let menuState = false;
@@ -32,10 +28,10 @@
 	>
 		<ul class="mt-16 menu menu-vertical w-full gap-2 px-1">
 			<li>
-				<a href="/" on:click={toggleMenu}><Icon icon="mdi:home" />Home</a>
+				<a href="/" on:click={toggleMenu}><Icon icon="mdi:home" class="h-4 w-4" />Home</a>
 			</li>
 			<li>
-				<a href="/" on:click={toggleMenu}><Icon icon="mdi:about" />About</a>
+				<a href="/" on:click={toggleMenu}><Icon icon="mdi:about" class="h-4 w-4" />About</a>
 			</li>
 		</ul>
 	</div>
