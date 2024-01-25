@@ -42,6 +42,9 @@
 			z-index: -1;
 		}
 	}
+	.iconify.iconify--mdi {
+		@apply h-4 w-4;
+	}
 }
 
 @layer utilities {
