@@ -6,11 +6,14 @@
 	import { auth, db, signIn } from '$lib/client/firebase';
 	import { goto } from '$app/navigation';
 	import Chart from '$lib/components/Chart.svelte';
-	import { collection } from 'firebase/firestore';
+	import { QuerySnapshot, collection, getDocs, type DocumentData } from 'firebase/firestore';
 
 	const user = userStore(auth);
 	const linksRef = collection(db, 'links');
-	$: links = collectionStore(db, linksRef);
+	let linksSnapshot: QuerySnapshot<DocumentData> = {} as QuerySnapshot<DocumentData>;
+	onMount(async () => {
+		linksSnapshot = await getDocs(linksRef);
+	});
 </script>
 
 <svelte:head>
@@ -44,8 +47,12 @@
 					<h2 class="text-xl">Total links</h2>
 					<div class="inline-flex items-end">
 						<span class="text-3xl font-bold">
-							{#if $links}
-								{$links.length}
+							{#if !linksSnapshot.empty}
+								{#if linksSnapshot.size !== undefined}
+									{linksSnapshot.size}
+								{:else}
+									<em>loading...</em>
+								{/if}
 							{:else}
 								0
 							{/if}
